@@ -35,7 +35,7 @@ export default function SettingsContent() {
     const { data, isPending, error } = useSession();
 
     return (
-        <div className="w-full max-w-2xl mx-auto">
+        <div className="w-[50%] max-w-xl mx-auto">
 
             {/* Account Section */}
             <div className="mb-8">
