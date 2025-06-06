@@ -25,13 +25,15 @@ export default function MobileDashboard() {
             <div className="min-h-screen bg-white flex flex-col">
 
                 <header className="flex items-center p-4 border-b border-gray-100">
+
                     <Button variant="ghost" size="icon" className="mr-2" onClick={() => setCurrentPage(null)}>
                         <ArrowLeft className="h-5 w-5" />
                     </Button>
                     <h1 className="text-lg font-semibold">{currentPage}</h1>
+
                 </header>
 
-                <main className="flex-1 flex items-center justify-center p-6">
+                <main className="flex-1 p-6 overflow-auto">
                     <PageContent title={currentPage} />
                 </main>
             </div>
@@ -47,15 +49,17 @@ export default function MobileDashboard() {
 
             <main className="p-4 space-y-6">
 
-                <div className="text-center space-y-4 py-8">
-                    <Avatar className="h-20 w-20 mx-auto bg-[#FF4B33]">
-                        <AvatarFallback className="bg-[#FF4B33] text-white text-2xl font-bold">{ data?.user.name.charAt(0) }</AvatarFallback>
-                    </Avatar>
-                    <div>
-                        <h1 className="text-xl font-semibold text-gray-900">{ data?.user.name }</h1>
-                        <p className="text-gray-500">{ data?.user.name }</p>
+                { data?.user.email && (
+                    <div className="text-center space-y-4 py-8">
+                        <Avatar className="h-16 w-16 mx-auto bg-[#FF4B33]">
+                            <AvatarFallback className="bg-[#FF4B33] text-white text-2xl font-bold">{ data?.user.name.charAt(0) }</AvatarFallback>
+                        </Avatar>
+                        <div>
+                            <h1 className="text-xl font-semibold text-gray-900">{ data?.user.name }</h1>
+                            <p className="text-gray-500">{ data?.user.name }</p>
+                        </div>
                     </div>
-                </div>
+                )}
 
                 <div className="space-y-3">
                     {menuItems.map((item) => (
