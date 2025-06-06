@@ -10,11 +10,11 @@ export default function DesktopLayout() {
     const [activePage, setActivePage] = useState("Purchases")
 
     const navItems = [
-        { icon: Sparkles, label: "Purchases" },
-        { icon: Calendar, label: "Subscriptions" },
-        { icon: Wallet, label: "Wallet" },
-        { icon: MapPin, label: "Addresses" },
-        { icon: Settings, label: "Settings" },
+        { icon: Sparkles, label: "Purchases", href: "/" },
+        { icon: Calendar, label: "Subscriptions", href: "/subscription" },
+        { icon: Wallet, label: "Wallet", href: "/wallet" },
+        { icon: MapPin, label: "Addresses", href: "/address" },
+        { icon: Settings, label: "Settings",href: "/settings" },
     ]
 
     const { data } = useSession()

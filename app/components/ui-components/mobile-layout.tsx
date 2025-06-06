@@ -64,7 +64,12 @@ export default function MobileDashboard() {
 
                 <div className="space-y-3">
                     {menuItems.map((item) => (
-                        <MenuItem key={item.label} icon={item.icon} label={item.label} onClick={() => setCurrentPage(item.label)} />
+                        <MenuItem 
+                            key={item.label} 
+                            icon={item.icon} 
+                            label={item.label} 
+                            onClick={() => setCurrentPage(item.label)} 
+                        />
                     ))}
                 </div>
 
