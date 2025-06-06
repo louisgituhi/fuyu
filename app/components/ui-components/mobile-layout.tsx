@@ -1,9 +1,8 @@
 import FuyuLogo from "./fuyulogo";
 import MenuItem from "./menu-item";
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { Card, CardContent } from "../ui/card";
+import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Button } from "../ui/button";
-import { Receipt, Settings, MapPin, Wallet, Calendar, ArrowLeft, Sparkles } from "lucide-react";
+import { Settings, MapPin, Wallet, Calendar, ArrowLeft, Sparkles } from "lucide-react";
 import PageContent from "./page-content";
 import { useState } from "react"
 import { useSession } from "~/lib/auth-client";
@@ -49,17 +48,19 @@ export default function MobileDashboard() {
 
             <main className="p-4 space-y-6">
 
-                { data?.user.email && (
-                    <div className="text-center space-y-4 py-8">
-                        <Avatar className="h-16 w-16 mx-auto bg-[#FF4B33]">
-                            <AvatarFallback className="bg-[#FF4B33] text-white text-2xl font-bold">{ data?.user.name.charAt(0) }</AvatarFallback>
-                        </Avatar>
-                        <div>
-                            <h1 className="text-xl font-semibold text-gray-900">{ data?.user.name }</h1>
-                            <p className="text-gray-500">{ data?.user.name }</p>
-                        </div>
-                    </div>
-                )}
+                <div className="text-center space-y-4 py-8">
+                    { data?.user.email && (
+                        <>
+                            <Avatar className="h-20 w-20 mx-auto bg-[#FF4B33]">
+                                <AvatarFallback className="bg-[#FF4B33] text-white text-2xl font-bold">{ data?.user.name.charAt(0) }</AvatarFallback>
+                            </Avatar>
+                            <div>
+                                <h1 className="text-xl font-semibold text-gray-900">{ data?.user.name }</h1>
+                                <p className="text-gray-500">{ data?.user.email }</p>
+                            </div>
+                        </>
+                    )}
+                </div>
 
                 <div className="space-y-3">
                     {menuItems.map((item) => (

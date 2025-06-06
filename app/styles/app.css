@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
 @import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
@@ -6,7 +7,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-karla: "Karla", sans-serif;
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
