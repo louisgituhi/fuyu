@@ -113,7 +113,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
         <div>
 
-          <div>
+          {/* <div>
             { data?.user ? (
               <p>Hello { data.user.name }</p>
             ) : (
@@ -139,7 +139,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               variant="destructive"
               />
             )}
-          </div>
+          </div> */}
 
         </div>
 
