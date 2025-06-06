@@ -37,59 +37,57 @@ export default function SettingsContent() {
     return (
         <div className="w-[50%] max-w-xl mx-auto">
 
-            {/* Account Section */}
-            <div className="mb-8">
-                <h2 className="text-xl font-semibold mb-4">Account</h2>
-                    <div className="bg-gray-50 rounded-lg overflow-hidden">
-                        <SettingsItem label="Name" value="Louis Wanyika Gituhi" />
-                        <SettingsItem label="Email" value="louisgituhi@gmail.com" />
-                        <SettingsItem label="Phone" value="•••• •••-00" />
-                    </div>
-            </div>
-
-            {/* Security Section */}
-            <div>
-                <h2 className="text-xl font-semibold mb-4">Security</h2>
-                <div className="bg-gray-50 rounded-lg overflow-hidden">
-                    <SettingsItem icon={Key} label="Passkeys" />
-                    <SettingsItem icon={Activity} label="Login activity" />
-                </div>
-            </div>
-
             { data?.user && (
-                <div className="mt-8 space-y-3">
-                    <Button
-                        className="w-full bg-gray-100 hover:bg-[#FA003F] text-gray-900"
-                        onClick={() => 
-                            signOut(
-                                {},
-                                {
-                                    onError: (error) => {
-                                        console.warn("Unable to sign you out", error)
-                                    },
-                                    onSuccess: () => {
-                                        console.log("Signed out successfully")
+                <>
+                    <div className="mb-8">
+                        <h2 className="text-xl font-semibold mb-4">Account</h2>
+                            <div className="bg-gray-50 rounded-lg overflow-hidden">
+                                <SettingsItem label="Name" value={ `${ data.user.name }` } />
+                                <SettingsItem label="Email" value={ `${ data.user.email }` } />
+                            </div>
+                    </div>
+
+                    <div>
+                        <h2 className="text-xl font-semibold mb-4">Security</h2>
+                        <div className="bg-gray-50 rounded-lg overflow-hidden">
+                            <SettingsItem icon={Key} label="Passkeys" />
+                            <SettingsItem icon={Activity} label="Login activity" />
+                        </div>
+                    </div>
+
+                    <div className="mt-8 space-y-3">
+                        <Button
+                            className="w-full bg-gray-100 hover:bg-[#FA003F] text-gray-900"
+                            onClick={() => 
+                                signOut(
+                                    {},
+                                    {
+                                        onError: (error) => {
+                                            console.warn("Unable to sign you out", error)
+                                        },
+                                        onSuccess: () => {
+                                            console.log("Signed out successfully")
+                                        }
                                     }
-                                }
-                            )
-                        }
-                    >
-                    Log out
-                    </Button>
+                                )
+                            }
+                        >
+                        Log out
+                        </Button>
 
-                    <Button
-                        variant="outline"
-                        className="w-full border-gray-300 text-gray-900 hover:bg-gray-50"
-                        onClick={() => {
-                            // Handle account deletion
-                            alert("Delete account functionality would be implemented here")
-                        }}
-                    >
-                    Delete account
-                    </Button>
-                </div>
+                        <Button
+                            variant="outline"
+                            className="w-full border-gray-300 text-gray-900 hover:bg-gray-50"
+                            onClick={() => {
+                                // Handle account deletion
+                                alert("Delete account functionality would be implemented here")
+                            }}
+                        >
+                        Delete account
+                        </Button>
+                    </div>
+                </>
             )}
-
         </div>
     )
 }
