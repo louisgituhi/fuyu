@@ -11,6 +11,7 @@ export default function MenuItem({ icon: Icon, label, onClick, showChevron = tru
     MenuItemProps) {
         return (
             <button
+                type="button"
                 onClick={onClick}
                 className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors rounded-lg group"
             >

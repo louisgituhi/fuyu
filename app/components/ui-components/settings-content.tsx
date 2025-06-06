@@ -14,8 +14,9 @@ function SettingsItem({ icon: Icon, label, value, onClick }: SettingsItemProps) 
 
     return (
         <button
-        onClick={onClick}
-        className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
+            type="button"
+            onClick={onClick}
+            className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
         >
             <div className="flex items-center gap-3">
                 {Icon && <Icon className="h-5 w-5 text-gray-600" />}

@@ -9,6 +9,7 @@
   },
   "private": true,
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/bun": "latest",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
