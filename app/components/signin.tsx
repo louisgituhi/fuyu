@@ -15,7 +15,7 @@ function FuyuLogo() {
   )
 }
 
-const orgin = typeof window != "undefined" ? window.location.origin : process.env.PUBLIC_SITE_URL;
+const origin = typeof window != "undefined" ? window.location.origin : process.env.PUBLIC_SITE_URL;
 export default function SignIn() {
     const [isLoading, setIsLoading] = useState(false)
 
