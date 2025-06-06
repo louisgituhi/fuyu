@@ -1,6 +1,5 @@
 "use client"
 import { signIn } from "~/lib/auth-client";
-import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle,CardDescription } from "./ui/card";
@@ -16,6 +15,7 @@ function FuyuLogo() {
   )
 }
 
+const orgin = typeof window != "undefined" ? window.location.origin : process.env.PUBLIC_SITE_URL;
 export default function SignIn() {
     const [isLoading, setIsLoading] = useState(false)
 
@@ -39,7 +39,7 @@ export default function SignIn() {
                         onClick={
                             () => signIn.social({
                                 provider: "google",
-                                callbackURL: "/"
+                                callbackURL: `${origin}`
                             })
                         } 
                         variant="outline" className="w-full h-12" disabled={isLoading}>
