@@ -15,7 +15,6 @@ function FuyuLogo() {
   )
 }
 
-const origin = typeof window !== "undefined" ? window.location.origin : process.env.PUBLIC_SITE_URL;
 export default function SignIn() {
     const [isLoading, setIsLoading] = useState(false)
 
@@ -39,7 +38,7 @@ export default function SignIn() {
                         onClick={
                             () => signIn.social({
                                 provider: "google",
-                                callbackURL: `${origin}`
+                                callbackURL: "/"
                             })
                         } 
                         variant="outline" className="w-full h-12" disabled={isLoading}>
