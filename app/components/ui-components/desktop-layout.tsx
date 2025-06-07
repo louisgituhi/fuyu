@@ -7,10 +7,10 @@ import { useSession } from "~/lib/auth-client";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Settings, MapPin, Wallet, Calendar, Sparkles } from "lucide-react";
 export default function DesktopLayout() {
-    const [activePage, setActivePage] = useState("Purchases")
+    const [activePage, setActivePage] = useState("Expenses")
 
     const navItems = [
-        { icon: Sparkles, label: "Purchases", href: "/" },
+        { icon: Sparkles, label: "Expenses", href: "/" },
         { icon: Calendar, label: "Subscriptions", href: "/subscription" },
         { icon: Wallet, label: "Wallet", href: "/wallet" },
         { icon: MapPin, label: "Addresses", href: "/address" },

@@ -10,7 +10,7 @@ export default function MobileDashboard() {
     const [currentPage, setCurrentPage] = useState<string | null>(null)
 
     const menuItems = [
-        { icon: Sparkles, label: "Purchases" },
+        { icon: Sparkles, label: "Expenses" },
         { icon: Calendar, label: "Subscriptions" },
         { icon: Wallet, label: "Wallet" },
         { icon: MapPin, label: "Addresses" },
