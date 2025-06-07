@@ -3,24 +3,26 @@ import { Button } from "../ui/button"
 import { expenseSchema } from "~/lib/definations"
 import { useForm } from "@tanstack/react-form"
 export default function ExpenseForm() {
+
     const form = useForm({
         defaultValues: {
-        expenses_type: "",
-        expenses_category: "",
-        amount: "",
-        transaction_cost: ""
+            expenses_type: "",
+            expenses_category: "",
+            amount: "",
+            transaction_cost: ""
     },
     validators: {
         onChange: expenseSchema
     },
     onSubmit: async ({ value }) => {
-        console.log(value)
         const res = await fetch("/api/expenses", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(value),
+            body: JSON.stringify({
+                ...value,
+            }),
         })
 
         if (!res.ok) {
@@ -28,9 +30,10 @@ export default function ExpenseForm() {
             throw new Error(`Request failed: ${ res.status } - ${ errorText }`)
         }
 
-        return res.json()
-    }
+            return res.json()
+        }   
     })
+
     return (
         <div>
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Purchases</h1>
@@ -55,20 +58,20 @@ export default function ExpenseForm() {
                                             htmlFor="expense-type" 
                                             className="text-sm font-medium text-gray-700"
                                         >
-                                        Expense Type
+                                            Expense Type
                                         </label>
         
                                         <select
-                                        id={ field.name }
-                                        name={ field.name }
-                                        value={ field.state.value }
-                                        onChange={(e) => field.handleChange(e.target.value)}
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                            id={ field.name }
+                                            name={ field.name }
+                                            value={ field.state.value }
+                                            onChange={(e) => field.handleChange(e.target.value)}
+                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                         >
-                                        <option value="" disabled>Select expense type</option>
-                                        <option value="Need">Need</option>
-                                        <option value="Want">Want</option>
-                                        <option value="Saving">Saving</option>
+                                            <option value="" disabled>Select expense type</option>
+                                            <option value="Need">Need</option>
+                                            <option value="Want">Want</option>
+                                            <option value="Saving">Saving</option>
                                         </select>
         
                                     </div>
@@ -151,6 +154,7 @@ export default function ExpenseForm() {
                                 )}
                             </form.Field>
 
+                        </div>
                             <form.Subscribe
                                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                                 // biome-ignore lint/correctness/noChildrenProp: <explanation>
@@ -164,7 +168,6 @@ export default function ExpenseForm() {
                                     </Button>
                               )}
                             />
-                        </div>
                       </form>
                   </CardContent>
                 </Card>

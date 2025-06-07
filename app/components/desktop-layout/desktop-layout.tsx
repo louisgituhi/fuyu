@@ -1,8 +1,8 @@
 "use client"
 import { useState } from "react"
-import FuyuLogo from "./fuyulogo";
+import FuyuLogo from "../fuyulogo";
 import NavItem from "./nav-item";
-import PageContent from "./page-content";
+import PageContent from "../page-content";
 import { useSession } from "~/lib/auth-client";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Settings, MapPin, Wallet, Calendar, Sparkles } from "lucide-react";
@@ -11,8 +11,8 @@ export default function DesktopLayout() {
 
     const navItems = [
         { icon: Sparkles, label: "Expenses", href: "/" },
+        { icon: Wallet, label: "Budget", href: "/budget" },
         { icon: Calendar, label: "Subscriptions", href: "/subscription" },
-        { icon: Wallet, label: "Wallet", href: "/wallet" },
         { icon: MapPin, label: "Addresses", href: "/address" },
         { icon: Settings, label: "Settings",href: "/settings" },
     ]

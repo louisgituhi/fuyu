@@ -1,9 +1,9 @@
 "use client"
 import { signIn } from "~/lib/auth-client";
 import { useState } from "react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle,CardDescription } from "./ui/card";
-import FuyuLogo from "./ui-components/fuyulogo";
+import { Button } from "../ui/button";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card";
+import FuyuLogo from "../fuyulogo";
 
 export default function SignIn() {
     const [isLoading, setIsLoading] = useState(false)

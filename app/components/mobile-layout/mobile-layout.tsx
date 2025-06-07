@@ -1,9 +1,9 @@
-import FuyuLogo from "./fuyulogo";
+import FuyuLogo from "../fuyulogo";
 import MenuItem from "./menu-item";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Settings, MapPin, Wallet, Calendar, ArrowLeft, Sparkles } from "lucide-react";
-import PageContent from "./page-content";
+import PageContent from "../page-content";
 import { useState } from "react"
 import { useSession } from "~/lib/auth-client";
 export default function MobileDashboard() {
@@ -11,8 +11,8 @@ export default function MobileDashboard() {
 
     const menuItems = [
         { icon: Sparkles, label: "Expenses" },
+        { icon: Wallet, label: "Budget" },
         { icon: Calendar, label: "Subscriptions" },
-        { icon: Wallet, label: "Wallet" },
         { icon: MapPin, label: "Addresses" },
         { icon: Settings, label: "Settings" },
     ]

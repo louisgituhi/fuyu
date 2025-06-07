@@ -1,10 +1,15 @@
 import { Receipt, Settings, MapPin, Wallet, Calendar } from "lucide-react";
-import SettingsContent from "./settings-content";
-import ExpensesContent from "./expense-content";
+import SettingsContent from "./settings/settings-content";
+import ExpensesContent from "./expense/expense-content";
+import BudgetContent from "./budget/budget-content";
 
 export default function PageContent({ title }: { title: string }) {
     if (title === "Expenses") {
         return <ExpensesContent />
+    }
+
+    if (title === "Budget") {
+        return <BudgetContent />
     }
 
     if (title === "Settings") {

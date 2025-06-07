@@ -1,19 +1,17 @@
 import {
   HeadContent,
-  Link,
   Outlet,
   Scripts,
   createRootRoute,
   useRouter
 } from '@tanstack/react-router'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import type * as React from 'react'
 import { DefaultCatchBoundary } from '~/components/default-catch-boundary'
 import { NotFound } from '~/components/not-found'
-import { signOut, useSession } from '~/lib/auth-client'
+import { useSession } from '~/lib/auth-client'
 import appCss from '~/styles/app.css?url'
-import { Button } from '~/components/ui/button'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -89,7 +87,7 @@ function RootComponent() {
 
 function RootDocument({ children }: { children: React.ReactNode }) {
 
-  const { data, isPending, error } = useSession();
+  const { data } = useSession();
   const { navigate } = useRouter()
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 "use client"
 
-import MobileDashboard from "../ui-components/mobile-layout"
-import DesktopLayout from "../ui-components/desktop-layout"
+import MobileDashboard from "../mobile-layout/mobile-layout"
+import DesktopLayout from "../desktop-layout/desktop-layout"
 export default function DashboardPage() {
     return (
         <>
