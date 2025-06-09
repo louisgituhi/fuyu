@@ -13,6 +13,7 @@ import type { QueryClient } from "@tanstack/react-query"
 import type * as React from 'react'
 import { DefaultCatchBoundary } from '~/components/default-catch-boundary'
 import { NotFound } from '~/components/not-found'
+import LoadingCircle from '~/components/loading-circle'
 import { useSession } from '~/lib/auth-client'
 import appCss from '~/styles/app.css?url'
 
@@ -91,18 +92,36 @@ function RootComponent() {
 
 function RootDocument({ children }: { children: React.ReactNode }) {
 
-  const { data } = useSession();
+  const { data, isPending } = useSession();
   const { navigate } = useRouter()
 
   useEffect(() => {
+    if (isPending) return
+
     if (!data?.user) {
-      if (!location.pathname.includes("/auth")) {
-        navigate({ to: "/auth/signin"})
+      if (!location.pathname.startsWith("/auth")) {
+        navigate({ to: "/auth/signin" })
       }
     } else {
-      navigate({ to: "/" })
+      if (location.pathname.startsWith("/auth")) {
+        navigate({ to: "/"});
+      }
     }
-  }, [data, navigate])
+  }, [isPending, data, navigate]);
+
+  if (isPending) {
+    return (
+      <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body className="font-karla bg-white">
+        <LoadingCircle />
+        <Scripts />
+      </body>
+    </html>
+    )
+  }
 
   return (
     <html lang='en'>
