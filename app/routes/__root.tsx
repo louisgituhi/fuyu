@@ -2,12 +2,10 @@ import {
   HeadContent,
   Outlet,
   Scripts,
-  createRootRoute,
   createRootRouteWithContext,
   useRouter
 } from '@tanstack/react-router'
 import { useEffect } from 'react'
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import type { QueryClient } from "@tanstack/react-query"
 import type * as React from 'react'
@@ -136,7 +134,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         {children}
 
         <TanStackRouterDevtools position="bottom-right" />
-        <ReactQueryDevtools buttonPosition="bottom-left" />
 
         <Scripts />
 
