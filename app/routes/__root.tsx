@@ -3,17 +3,21 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
+  createRootRouteWithContext,
   useRouter
 } from '@tanstack/react-router'
 import { useEffect } from 'react'
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import type { QueryClient } from "@tanstack/react-query"
 import type * as React from 'react'
 import { DefaultCatchBoundary } from '~/components/default-catch-boundary'
 import { NotFound } from '~/components/not-found'
 import { useSession } from '~/lib/auth-client'
 import appCss from '~/styles/app.css?url'
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient}>()({
   head: () => ({
     meta: [
       {
@@ -109,42 +113,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
       <body className=' font-karla'>
 
-        <div>
-
-          {/* <div>
-            { data?.user ? (
-              <p>Hello { data.user.name }</p>
-            ) : (
-              <></>
-            )}
-          </div>
-
-          <div>
-            { data?.user && (
-              <Button onClick={() => {
-                signOut(
-                  {},
-                  {
-                    onError: (error) => {
-                      console.warn(error)
-                    },
-                    onSuccess: () => {
-                      console.log("You have been signed out")
-                    },
-                  },
-                )
-              }}
-              variant="destructive"
-              />
-            )}
-          </div> */}
-
-        </div>
-
         <hr />
         {children}
 
         <TanStackRouterDevtools position="bottom-right" />
+        <ReactQueryDevtools buttonPosition="bottom-left" />
 
         <Scripts />
 
