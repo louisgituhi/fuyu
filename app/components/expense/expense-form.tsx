@@ -134,6 +134,8 @@ export default function ExpenseForm() {
                                             <option value="Groceries">Groceries</option>
                                             <option value="Shopping">Shopping</option>
                                             <option value="Rent">Rent</option>
+                                            <option value="Savings">Savings</option>
+                                            <option value="Investments">Investments</option>
                                         </select>
                                     </div>
                                 )}
