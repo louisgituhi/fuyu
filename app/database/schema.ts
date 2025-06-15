@@ -1,4 +1,4 @@
-import { pgTable, timestamp, numeric, pgEnum, text, serial, date, boolean, integer } from "drizzle-orm/pg-core"
+import { pgTable, timestamp, numeric, pgEnum, text, serial, date, boolean } from "drizzle-orm/pg-core"
 
 export const expensesCategory = pgEnum("exp_category", 
     ["Rent", "Shopping", "Groceries", "Transport", "Wi-Fi", "Clothing", "Healthcare", "Hair grooming", "Airtime", "Snacks", "Launch", "Utility", "Outing", "Lending"]
@@ -56,8 +56,8 @@ export const monthlyBudgetTable = pgTable("monthly_budget_table", {
     user_id: text().references(() => user.id, { onDelete: 'cascade'}),
     net_salary: numeric({ precision: 10, scale: 2 }).notNull(),
     entry_date: date().notNull().defaultNow(),
-    period_start: date().notNull(), // always 25th of current/previous month
-    period_end: date().notNull(), // always 24th of next month
+    period_start: date().notNull(),
+    period_end: date().notNull(),
     label: text().notNull(),
     created_at: timestamp().defaultNow()
 });

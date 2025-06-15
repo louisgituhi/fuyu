@@ -2,8 +2,10 @@ import { Card, CardContent } from "../ui/card"
 import { Button } from "../ui/button"
 import { expenseSchema } from "~/lib/definations"
 import { useForm } from "@tanstack/react-form"
+import { useActiveBudget } from "~/hooks/isActiveBudget"
 export default function ExpenseForm() {
 
+    const { data: budget, isLoading } = useActiveBudget()
     const form = useForm({
         defaultValues: {
             expenses_type: "",
@@ -36,6 +38,31 @@ export default function ExpenseForm() {
 
     return (
         <div>
+            <Card className="bg-green-100 text-black shadow-lg hover:shadow-xl transition-all duration-300 mb-4">
+                <CardContent className="p-3">
+                    <div className="text-center">
+                        {isLoading ? (
+                            <div className="space-y-2">
+                                <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto" />
+                                <p className="text-sm">Loading active budget...</p>
+                            </div>
+                        ) : budget ? (
+                            <div className="space-y-0">
+                                <p className="text-sm font-medium uppercase tracking-wide">Active Budget</p>
+                                <p className="text-2xl font-bold">{budget.net_salary.toLocaleString()}</p>
+                                <div className="w-12 h-1 rounded-full mx-auto mt-1" />
+                            </div>
+                        ) : (
+                            <div className="space-y-2">
+                                <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mx-auto">
+                                    <span className="text-red-600 text-lg">!</span>
+                                </div>
+                                <p className="text-sm text-green-600">No active budget</p>
+                            </div>
+                        )}
+                    </div>
+                </CardContent>
+            </Card>
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Purchases</h1>
         
             <Card className="mb-8">
@@ -103,7 +130,7 @@ export default function ExpenseForm() {
                                             <option value="Healthcare">Healthcare</option>
                                             <option value="Clothing">Clothing</option>
                                             <option value="Wi-Fi">Wi-Fi</option>
-                                            <option value="Tranport">Tranport</option>
+                                            <option value="Transport">Transport</option>
                                             <option value="Groceries">Groceries</option>
                                             <option value="Shopping">Shopping</option>
                                             <option value="Rent">Rent</option>
@@ -116,7 +143,7 @@ export default function ExpenseForm() {
                                 {(field) => (
                                     <div className="space-y-2">
                                         <label htmlFor="amount" className="text-sm font-medium text-gray-700">
-                                            Amount ($)
+                                            Amount
                                         </label>
                                         <input
                                             id={field.name}
@@ -137,7 +164,7 @@ export default function ExpenseForm() {
                                 {(field) => (
                                     <div className="space-y-2">
                                         <label htmlFor="transaction-amount" className="text-sm font-medium text-gray-700">
-                                            Transaction Amount ($)
+                                            Transaction Amount
                                         </label>
                                         <input
                                             id={field.name}

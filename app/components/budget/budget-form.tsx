@@ -59,7 +59,7 @@ export default function BudgetForm() {
                                                 htmlFor="net-salary" 
                                                 className="text-sm font-medium text-gray-700"
                                             >
-                                                Net Salary ($)
+                                                Net Salary
                                             </label>
 
                                             <input

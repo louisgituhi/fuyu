@@ -3,17 +3,14 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
-  useRouter
 } from '@tanstack/react-router'
-import { useEffect } from 'react'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import type { QueryClient } from "@tanstack/react-query"
 import type * as React from 'react'
 import { DefaultCatchBoundary } from '~/components/default-catch-boundary'
 import { NotFound } from '~/components/not-found'
-import LoadingCircle from '~/components/loading-circle'
-import { useSession } from '~/lib/auth-client'
 import appCss from '~/styles/app.css?url'
+import AuthGuard from '~/components/auth/auth-guard'
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient}>()({
@@ -90,37 +87,6 @@ function RootComponent() {
 
 function RootDocument({ children }: { children: React.ReactNode }) {
 
-  const { data, isPending } = useSession();
-  const { navigate } = useRouter()
-
-  useEffect(() => {
-    if (isPending) return
-
-    if (!data?.user) {
-      if (!location.pathname.startsWith("/auth")) {
-        navigate({ to: "/auth/signin" })
-      }
-    } else {
-      if (location.pathname.startsWith("/auth")) {
-        navigate({ to: "/"});
-      }
-    }
-  }, [isPending, data, navigate]);
-
-  if (isPending) {
-    return (
-      <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body className="font-karla bg-white">
-        <LoadingCircle />
-        <Scripts />
-      </body>
-    </html>
-    )
-  }
-
   return (
     <html lang='en'>
 
@@ -129,10 +95,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
 
       <body className=' font-karla'>
-
-        <hr />
-        {children}
-
+        <AuthGuard>
+          <hr />
+          {children}
+        </AuthGuard>
         <TanStackRouterDevtools position="bottom-right" />
 
         <Scripts />
