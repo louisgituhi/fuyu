@@ -1,7 +1,8 @@
-import { Receipt, Settings, MapPin, Wallet, Calendar } from "lucide-react";
+import { Receipt, Settings, MapPin, Wallet, FileText } from "lucide-react";
 import SettingsContent from "./settings/settings-content";
 import ExpensesContent from "./expense/expense-content";
 import BudgetContent from "./budget/budget-content";
+import SummaryTable from "./summary/summary-table";
 
 export default function PageContent({ title }: { title: string }) {
     if (title === "Expenses") {
@@ -12,14 +13,18 @@ export default function PageContent({ title }: { title: string }) {
         return <BudgetContent />
     }
 
+    if (title === "Summary") {
+        return <SummaryTable />
+    }
+
     if (title === "Settings") {
         return <SettingsContent />
     }
 
     const getIcon = () => {
         switch (title) {
-            case "Subscriptions":
-                return Calendar
+            case "Summary":
+                return FileText
             case "Wallet":
                 return Wallet
             case "Addresses":

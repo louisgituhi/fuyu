@@ -5,14 +5,14 @@ import NavItem from "./nav-item";
 import PageContent from "../page-content";
 import { useSession } from "~/lib/auth-client";
 import { Avatar, AvatarFallback } from "../ui/avatar";
-import { Settings, MapPin, Wallet, Calendar, Sparkles } from "lucide-react";
+import { Settings, MapPin, Wallet, Calendar, Sparkles, FileText } from "lucide-react";
 export default function DesktopLayout() {
     const [activePage, setActivePage] = useState("Expenses")
 
     const navItems = [
         { icon: Sparkles, label: "Expenses", href: "/" },
         { icon: Wallet, label: "Budget", href: "/budget" },
-        { icon: Calendar, label: "Subscriptions", href: "/subscription" },
+        { icon: FileText, label: "Summary", href: "/summary" },
         { icon: MapPin, label: "Addresses", href: "/address" },
         { icon: Settings, label: "Settings",href: "/settings" },
     ]

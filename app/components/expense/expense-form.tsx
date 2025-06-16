@@ -1,4 +1,6 @@
 import { Card, CardContent } from "../ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
+import { Label } from "../ui/label"
 import { Button } from "../ui/button"
 import { expenseSchema } from "~/lib/definations"
 import { useForm } from "@tanstack/react-form"
@@ -85,25 +87,30 @@ export default function ExpenseForm() {
                                 {(field) => (
                                     <div className=" space-y-2">
         
-                                        <label 
+                                        <Label 
                                             htmlFor="expense-type" 
                                             className="text-sm font-medium text-gray-700"
                                         >
                                             Expense Type
-                                        </label>
-        
-                                        <select
-                                            id={ field.name }
-                                            name={ field.name }
-                                            value={ field.state.value }
-                                            onChange={(e) => field.handleChange(e.target.value)}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        </Label>
+
+                                        <Select
+                                            name={ field.name } 
+                                            value={ field.state.value}
+                                            onValueChange={field.handleChange}
                                         >
-                                            <option value="" disabled>Select expense type</option>
-                                            <option value="Need">Need</option>
-                                            <option value="Want">Want</option>
-                                            <option value="Saving">Saving</option>
-                                        </select>
+
+                                            <SelectTrigger className="w-full">
+                                                <SelectValue placeholder="Select expense type" />
+                                            </SelectTrigger>
+
+                                            <SelectContent>
+                                                <SelectItem value="Need">Need</SelectItem>
+                                                <SelectItem value="Want">Want</SelectItem>
+                                                <SelectItem value="Saving">Saving</SelectItem>
+                                            </SelectContent>
+                                            
+                                        </Select>
         
                                     </div>
                                 )}
@@ -112,35 +119,40 @@ export default function ExpenseForm() {
                             <form.Field name="expenses_category">
                                 {(field) => (
                                     <div className="space-y-2">
-                                        <label htmlFor="expense-category" className="text-sm font-medium text-gray-700">
+                                        <Label htmlFor="expense-category" className="text-sm font-medium text-gray-700">
                                             Expense Category
-                                        </label>
-        
-                                        <select
-                                            id={ field.name }
-                                            name={ field.name }
-                                            value={ field.state.value }
-                                            onChange={(e) => field.handleChange(e.target.value)}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        </Label>
+
+                                        <Select 
+                                            name={ field.name } 
+                                            value={ field.state.value}
+                                            onValueChange={field.handleChange}
                                         >
-                                            <option value="" disabled>Select category</option>
-                                            <option value="Lending">Lending</option>
-                                            <option value="Outing">Outing</option>
-                                            <option value="Utility">Utility</option>
-                                            <option value="Lunch">Lunch</option>
-                                            <option value="Snacks">Snacks</option>
-                                            <option value="Airtime">Airtime</option>
-                                            <option value="Hair grooming">Hair grooming</option>
-                                            <option value="Healthcare">Healthcare</option>
-                                            <option value="Clothing">Clothing</option>
-                                            <option value="Wi-Fi">Wi-Fi</option>
-                                            <option value="Transport">Transport</option>
-                                            <option value="Groceries">Groceries</option>
-                                            <option value="Shopping">Shopping</option>
-                                            <option value="Rent">Rent</option>
-                                            <option value="Savings">Savings</option>
-                                            <option value="Investments">Investments</option>
-                                        </select>
+                                            <SelectTrigger className="w-full">
+                                                <SelectValue placeholder="Select category" />
+                                            </SelectTrigger>
+
+                                            <SelectContent>
+                                                <SelectItem value="Lending">Lending</SelectItem>
+                                                <SelectItem value="Outing">Outing</SelectItem>
+                                                <SelectItem value="Utility">Utility</SelectItem>
+                                                <SelectItem value="Lunch">Lunch</SelectItem>
+                                                <SelectItem value="Snacks">Snacks</SelectItem>
+                                                <SelectItem value="Airtime">Airtime</SelectItem>
+                                                <SelectItem value="Hair grooming">Hair grooming</SelectItem>
+                                                <SelectItem value="Healthcare">Healthcare</SelectItem>
+                                                <SelectItem value="Clothing">Clothing</SelectItem>
+                                                <SelectItem value="Wi-Fi">Wi-Fi</SelectItem>
+                                                <SelectItem value="Transport">Transport</SelectItem>
+                                                <SelectItem value="Groceries">Groceries</SelectItem>
+                                                <SelectItem value="Shopping">Shopping</SelectItem>
+                                                <SelectItem value="Rent">Rent</SelectItem>
+                                                <SelectItem value="Savings">Savings</SelectItem>
+                                                <SelectItem value="Investments">Investments</SelectItem>
+                                            </SelectContent>
+
+                                        </Select>
+
                                     </div>
                                 )}
                             </form.Field>
