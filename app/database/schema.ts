@@ -1,7 +1,7 @@
 import { pgTable, timestamp, numeric, pgEnum, text, serial, date, boolean } from "drizzle-orm/pg-core"
 
 export const expensesCategory = pgEnum("exp_category", 
-    ["Rent", "Shopping", "Groceries", "Transport", "Wi-Fi", "Clothing", "Healthcare", "Hair grooming", "Airtime", "Snacks", "Launch", "Utility", "Outing", "Savings", "Investment", "Lending"]
+    ["Rent", "Shopping", "Groceries", "Transport", "Wi-Fi", "Clothing", "Healthcare", "Hair grooming", "Airtime", "Snacks", "Lunch", "Utility", "Outing", "Savings", "Investment", "Lending"]
 )
 export const expensesType = pgEnum("exp_type", ["Need", "Want", "Savings"])
 

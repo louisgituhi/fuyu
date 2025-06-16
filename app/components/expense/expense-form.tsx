@@ -22,7 +22,7 @@ export default function ExpenseForm() {
         if (!budget.id) {
             throw new Error("No active budget found")
         }
-        const res = await fetch("/api/expenses", {
+        const res = await fetch("/api/add-expenses", { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ export default function ExpenseForm() {
                                                 <SelectItem value="Want">Want</SelectItem>
                                                 <SelectItem value="Saving">Saving</SelectItem>
                                             </SelectContent>
-                                            
+
                                         </Select>
         
                                     </div>

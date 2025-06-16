@@ -18,7 +18,7 @@ export default function BudgetForm() {
         },
         onSubmit: async ({ value }) => {
             console.log(value)
-            const res = await fetch('/api/budget', {
+            const res = await fetch('/api/add-budget', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

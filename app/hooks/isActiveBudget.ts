@@ -7,8 +7,6 @@ export function useActiveBudget() {
             const res = await fetch('/api/active-budget')
 
             if (!res.ok) {
-                const msg = await res.text()
-                console.error('Failed:', msg)
                 throw new Error('Failed to fetch active budget')
             }
 

@@ -2,7 +2,7 @@ import { expensesTable } from '~/database/schema'
 import { db } from '~/database/db'
 import { createAPIFileRoute } from '@tanstack/react-start/api'
 
-export const APIRoute = createAPIFileRoute('/api/expenses')({
+export const APIRoute = createAPIFileRoute('/api/add-expenses')({
   POST: async ({ request }) => {
     try {
         const body = await request.json()
