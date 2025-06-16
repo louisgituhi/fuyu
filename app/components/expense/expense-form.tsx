@@ -17,6 +17,9 @@ export default function ExpenseForm() {
         onChange: expenseSchema
     },
     onSubmit: async ({ value }) => {
+        if (!budget.id) {
+            throw new Error("No active budget found")
+        }
         const res = await fetch("/api/expenses", {
             method: 'POST',
             headers: {
@@ -24,6 +27,7 @@ export default function ExpenseForm() {
             },
             body: JSON.stringify({
                 ...value,
+                budget_id: budget.id
             }),
         })
 
