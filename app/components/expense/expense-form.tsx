@@ -139,7 +139,7 @@ export default function ExpenseForm() {
                                                 <SelectItem value="Healthcare">Healthcare</SelectItem>
                                                 <SelectItem value="Airtime">Airtime</SelectItem>
                                                 <SelectItem value="Food">Food</SelectItem>
-                                                <SelectItem value="Utilities">Utilities </SelectItem>
+                                                <SelectItem value="Utilities">Utilities</SelectItem>
                                                 <SelectItem value="Entertainment">Entertainment</SelectItem>
                                                 <SelectItem value="Savings">Savings</SelectItem>
                                                 <SelectItem value="Investments">Investments</SelectItem>

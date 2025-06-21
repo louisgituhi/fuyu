@@ -28,22 +28,19 @@ export const budgetSchema = z.object({
 )
 
 export const expenseSchema = z.object({
-    expenses_type: z.enum(["Need", "Want", "Savings"]),
+    expenses_type: z.enum(["Need", "Want", "Saving"]),
     expenses_category: z.enum([
-        "Lending",
-        "Outing",
-        "Utility",
-        "Lunch",
-        "Snacks",
-        "Airtime",
-        "Hair grooming",
-        "Healthcare",
-        "Clothing",
-        "Wi-Fi",
-        "Transport",
-        "Groceries",
-        "Shopping",
-        "Rent"
+        "Groceries", 
+        "Transport", 
+        "Grooming", 
+        "Healthcare", 
+        "Airtime", 
+        "Food", 
+        "Utilities", 
+        "Entertainment", 
+        "Savings", 
+        "Investments", 
+        "Lending"
     ]),
     amount: z
         .string()
