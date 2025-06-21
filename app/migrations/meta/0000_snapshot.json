@@ -1,5 +1,5 @@
 {
-  "id": "945810ae-4374-4eba-a547-42b871260d87",
+  "id": "5739a340-28f2-42f5-b527-c144be509e86",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -127,14 +127,14 @@
         },
         "expenses_type": {
           "name": "expenses_type",
-          "type": "exp_type",
+          "type": "expense_type",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         },
         "expenses_category": {
           "name": "expenses_category",
-          "type": "exp_category",
+          "type": "expense_category",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
@@ -155,7 +155,7 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "default": "now()"
         }
       },
@@ -455,33 +455,30 @@
     }
   },
   "enums": {
-    "public.exp_category": {
-      "name": "exp_category",
+    "public.expense_category": {
+      "name": "expense_category",
       "schema": "public",
       "values": [
-        "Rent",
-        "Shopping",
         "Groceries",
         "Transport",
-        "Wi-Fi",
-        "Clothing",
+        "Grooming",
         "Healthcare",
-        "Hair grooming",
         "Airtime",
-        "Snacks",
-        "Launch",
-        "Utility",
-        "Outing",
+        "Food",
+        "Utilities",
+        "Entertainment",
+        "Savings",
+        "Investments",
         "Lending"
       ]
     },
-    "public.exp_type": {
-      "name": "exp_type",
+    "public.expense_type": {
+      "name": "expense_type",
       "schema": "public",
       "values": [
         "Need",
         "Want",
-        "Savings"
+        "Saving"
       ]
     }
   },

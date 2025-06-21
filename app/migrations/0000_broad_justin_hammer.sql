@@ -1,5 +1,5 @@
-CREATE TYPE "public"."exp_category" AS ENUM('Rent', 'Shopping', 'Groceries', 'Transport', 'Wi-Fi', 'Clothing', 'Healthcare', 'Hair grooming', 'Airtime', 'Snacks', 'Launch', 'Utility', 'Outing', 'Lending');--> statement-breakpoint
-CREATE TYPE "public"."exp_type" AS ENUM('Need', 'Want', 'Savings');--> statement-breakpoint
+CREATE TYPE "public"."expense_category" AS ENUM('Groceries', 'Transport', 'Grooming', 'Healthcare', 'Airtime', 'Food', 'Utilities', 'Entertainment', 'Savings', 'Investments', 'Lending');--> statement-breakpoint
+CREATE TYPE "public"."expense_type" AS ENUM('Need', 'Want', 'Saving');--> statement-breakpoint
 CREATE TABLE "account" (
 	"id" text PRIMARY KEY NOT NULL,
 	"account_id" text NOT NULL,
@@ -19,11 +19,11 @@ CREATE TABLE "account" (
 CREATE TABLE "expenses_table" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"budget_id" serial NOT NULL,
-	"expenses_type" "exp_type" NOT NULL,
-	"expenses_category" "exp_category" NOT NULL,
+	"expenses_type" "expense_type" NOT NULL,
+	"expenses_category" "expense_category" NOT NULL,
 	"amount" numeric(10, 2) NOT NULL,
 	"transaction_cost" numeric(10, 2) NOT NULL,
-	"created_at" timestamp DEFAULT now()
+	"created_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "monthly_budget_table" (

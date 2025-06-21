@@ -133,22 +133,17 @@ export default function ExpenseForm() {
                                             </SelectTrigger>
 
                                             <SelectContent>
-                                                <SelectItem value="Lending">Lending</SelectItem>
-                                                <SelectItem value="Outing">Outing</SelectItem>
-                                                <SelectItem value="Utility">Utility</SelectItem>
-                                                <SelectItem value="Lunch">Lunch</SelectItem>
-                                                <SelectItem value="Snacks">Snacks</SelectItem>
-                                                <SelectItem value="Airtime">Airtime</SelectItem>
-                                                <SelectItem value="Hair grooming">Hair grooming</SelectItem>
-                                                <SelectItem value="Healthcare">Healthcare</SelectItem>
-                                                <SelectItem value="Clothing">Clothing</SelectItem>
-                                                <SelectItem value="Wi-Fi">Wi-Fi</SelectItem>
-                                                <SelectItem value="Transport">Transport</SelectItem>
                                                 <SelectItem value="Groceries">Groceries</SelectItem>
-                                                <SelectItem value="Shopping">Shopping</SelectItem>
-                                                <SelectItem value="Rent">Rent</SelectItem>
+                                                <SelectItem value="Transport">Transport</SelectItem>
+                                                <SelectItem value="Grooming">Grooming</SelectItem>
+                                                <SelectItem value="Healthcare">Healthcare</SelectItem>
+                                                <SelectItem value="Airtime">Airtime</SelectItem>
+                                                <SelectItem value="Food">Food</SelectItem>
+                                                <SelectItem value="Utilities">Utilities </SelectItem>
+                                                <SelectItem value="Entertainment">Entertainment</SelectItem>
                                                 <SelectItem value="Savings">Savings</SelectItem>
                                                 <SelectItem value="Investments">Investments</SelectItem>
+                                                <SelectItem value="Lending">Lending</SelectItem>
                                             </SelectContent>
 
                                         </Select>

@@ -1,9 +1,9 @@
 import { pgTable, timestamp, numeric, pgEnum, text, serial, date, boolean } from "drizzle-orm/pg-core"
 
-export const expensesCategory = pgEnum("exp_category", 
-    ["Rent", "Shopping", "Groceries", "Transport", "Wi-Fi", "Clothing", "Healthcare", "Hair grooming", "Airtime", "Snacks", "Lunch", "Utility", "Outing", "Savings", "Investment", "Lending"]
+export const expensesCategory = pgEnum("expense_category", 
+    ["Groceries", "Transport", "Grooming", "Healthcare", "Airtime", "Food", "Utilities", "Entertainment", "Savings", "Investments", "Lending"]
 )
-export const expensesType = pgEnum("exp_type", ["Need", "Want", "Savings"])
+export const expensesType = pgEnum("expense_type", ["Need", "Want", "Saving"])
 
 export const user = pgTable("user", {
     id: text('id').primaryKey(),
@@ -69,6 +69,6 @@ export const expensesTable = pgTable("expenses_table", {
     expenses_category: expensesCategory().notNull(),
     amount: numeric({ precision: 10, scale: 2 }).notNull(),
     transaction_cost: numeric({ precision: 10, scale: 2 }).notNull(),
-    created_at: timestamp().defaultNow()
+    created_at: timestamp().defaultNow().notNull()
 })
 
