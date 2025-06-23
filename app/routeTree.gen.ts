@@ -11,10 +11,17 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ExpensesImport } from './routes/expenses'
 import { Route as IndexImport } from './routes/index'
 import { Route as AuthSigninImport } from './routes/auth/signin'
 
 // Create/Update Routes
+
+const ExpensesRoute = ExpensesImport.update({
+  id: '/expenses',
+  path: '/expenses',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -39,6 +46,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/expenses': {
+      id: '/expenses'
+      path: '/expenses'
+      fullPath: '/expenses'
+      preLoaderRoute: typeof ExpensesImport
+      parentRoute: typeof rootRoute
+    }
     '/auth/signin': {
       id: '/auth/signin'
       path: '/auth/signin'
@@ -53,36 +67,41 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/expenses': typeof ExpensesRoute
   '/auth/signin': typeof AuthSigninRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/expenses': typeof ExpensesRoute
   '/auth/signin': typeof AuthSigninRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/expenses': typeof ExpensesRoute
   '/auth/signin': typeof AuthSigninRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth/signin'
+  fullPaths: '/' | '/expenses' | '/auth/signin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth/signin'
-  id: '__root__' | '/' | '/auth/signin'
+  to: '/' | '/expenses' | '/auth/signin'
+  id: '__root__' | '/' | '/expenses' | '/auth/signin'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExpensesRoute: typeof ExpensesRoute
   AuthSigninRoute: typeof AuthSigninRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExpensesRoute: ExpensesRoute,
   AuthSigninRoute: AuthSigninRoute,
 }
 
@@ -97,11 +116,15 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/expenses",
         "/auth/signin"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/expenses": {
+      "filePath": "expenses.tsx"
     },
     "/auth/signin": {
       "filePath": "auth/signin.tsx"
