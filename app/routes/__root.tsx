@@ -7,10 +7,10 @@ import {
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import type { QueryClient } from "@tanstack/react-query"
 import type * as React from 'react'
-import { DefaultCatchBoundary } from '~/components/default-catch-boundary'
-import { NotFound } from '~/components/not-found'
+import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
+import { NotFound } from '~/components/NotFound'
 import appCss from '~/styles/app.css?url'
-import AuthGuard from '~/components/auth/auth-guard'
+import AuthGuard from '~/components/AuthGuard'
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient}>()({

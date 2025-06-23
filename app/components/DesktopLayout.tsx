@@ -1,21 +1,42 @@
 "use client"
 import { useState } from "react"
-import FuyuLogo from "../fuyulogo";
-import NavItem from "./nav-item";
-import PageContent from "../page-content";
+import FuyuLogo from "./FuyuLogo";
+import PageContent from "./PageContents";
 import { useSession } from "~/lib/auth-client";
-import { Avatar, AvatarFallback } from "../ui/avatar";
-import { Settings, MapPin, Wallet, Calendar, Sparkles, FileText } from "lucide-react";
-export default function DesktopLayout() {
-    const [activePage, setActivePage] = useState("Expenses")
+import { Avatar, AvatarFallback } from "./ui/avatar";
+import { Settings, MapPin, Wallet, Sparkles, FileText } from "lucide-react";
+import type { ReactNode } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
 
-    const navItems = [
+interface NavItemProps {
+    icon: React.ElementType
+    label: string
+    href: string
+    isActive?: boolean
+}
+ const navItems = [
         { icon: Sparkles, label: "Expenses", href: "/" },
         { icon: Wallet, label: "Budget", href: "/budget" },
         { icon: FileText, label: "Summary", href: "/summary" },
         { icon: MapPin, label: "Addresses", href: "/address" },
         { icon: Settings, label: "Settings",href: "/settings" },
     ]
+
+function NavItem({ icon: Icon, label, href, isActive }: NavItemProps) {
+  return (
+        <Link
+            to={ href }
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left ${
+                isActive ? "bg-gray-100" : "hover:bg-gray-50"
+            }`}
+        >
+            <Icon className="h-5 w-5 text-gray-700" />
+            <span className="font-medium text-gray-900">{label}</span>
+        </Link>
+  )
+}
+export default function DesktopLayout({ children }: { children: ReactNode }) {
+    const { location } = useRouterState()
 
     const { data } = useSession()
 
@@ -43,11 +64,11 @@ export default function DesktopLayout() {
                 <nav className="flex-1 py-4 overflow-y-auto">
                     {navItems.map((item) => (
                         <NavItem
-                        key={item.label}
-                        icon={item.icon}
-                        label={item.label}
-                        isActive={activePage === item.label}
-                        onClick={() => setActivePage(item.label)}
+                            key={ item.label }
+                            icon={ item.icon }
+                            label={ item.label }
+                            href={ item.href }
+                            isActive={ location.pathname === item.href }
                         />
                     ))}
                 </nav>
@@ -56,7 +77,7 @@ export default function DesktopLayout() {
 
             <main className="flex-1 h-screen overflow-auto">
                 <div className="h-full flex items-center justify-center p-8">
-                    <PageContent title={activePage} />
+                    { children }
                 </div>
             </main>
 

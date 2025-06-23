@@ -1,4 +1,4 @@
-import ExpenseForm from "./expense-form"
+import ExpenseForm from "./ExpenseForm"
 
 export default function ExpensesContent() {
 

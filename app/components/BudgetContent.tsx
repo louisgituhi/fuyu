@@ -1,4 +1,4 @@
-import BudgetForm from "./budget-form";
+import BudgetForm from "./BudgetForm"
 
 export default function BudgetContent() {
     return (

@@ -1,7 +1,7 @@
 import { useForm } from "@tanstack/react-form"
 import { budgetSchema } from "~/lib/definations"
-import { Card, CardContent } from "../ui/card"
-import { Button } from "../ui/button"
+import { Card, CardContent } from "./ui/card"
+import { Button } from "./ui/button"
 import { useSession } from "~/lib/auth-client"
 export default function BudgetForm() {
 

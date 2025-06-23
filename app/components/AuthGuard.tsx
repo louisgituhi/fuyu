@@ -2,7 +2,7 @@ import type React from "react";
 import { useEffect } from "react";
 import { useRouter } from "@tanstack/react-router";
 import { useSession } from "~/lib/auth-client";
-import LoadingCircle from "./loading-circle";
+import LoadingCircle from "./LoadingIndicator";
 
 export default function AuthGuard({ children }: { children: React.ReactNode}) {
     const { data, isPending } = useSession()

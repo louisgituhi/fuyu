@@ -12,6 +12,8 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as ExpensesImport } from './routes/expenses'
+import { Route as BudgetImport } from './routes/budget'
+import { Route as AuthLayoutImport } from './routes/_auth-layout'
 import { Route as IndexImport } from './routes/index'
 import { Route as AuthSigninImport } from './routes/auth/signin'
 
@@ -20,6 +22,17 @@ import { Route as AuthSigninImport } from './routes/auth/signin'
 const ExpensesRoute = ExpensesImport.update({
   id: '/expenses',
   path: '/expenses',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BudgetRoute = BudgetImport.update({
+  id: '/budget',
+  path: '/budget',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthLayoutRoute = AuthLayoutImport.update({
+  id: '/_auth-layout',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -46,6 +59,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/_auth-layout': {
+      id: '/_auth-layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthLayoutImport
+      parentRoute: typeof rootRoute
+    }
+    '/budget': {
+      id: '/budget'
+      path: '/budget'
+      fullPath: '/budget'
+      preLoaderRoute: typeof BudgetImport
+      parentRoute: typeof rootRoute
+    }
     '/expenses': {
       id: '/expenses'
       path: '/expenses'
@@ -67,12 +94,16 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '': typeof AuthLayoutRoute
+  '/budget': typeof BudgetRoute
   '/expenses': typeof ExpensesRoute
   '/auth/signin': typeof AuthSigninRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '': typeof AuthLayoutRoute
+  '/budget': typeof BudgetRoute
   '/expenses': typeof ExpensesRoute
   '/auth/signin': typeof AuthSigninRoute
 }
@@ -80,27 +111,39 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/_auth-layout': typeof AuthLayoutRoute
+  '/budget': typeof BudgetRoute
   '/expenses': typeof ExpensesRoute
   '/auth/signin': typeof AuthSigninRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/expenses' | '/auth/signin'
+  fullPaths: '/' | '' | '/budget' | '/expenses' | '/auth/signin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/expenses' | '/auth/signin'
-  id: '__root__' | '/' | '/expenses' | '/auth/signin'
+  to: '/' | '' | '/budget' | '/expenses' | '/auth/signin'
+  id:
+    | '__root__'
+    | '/'
+    | '/_auth-layout'
+    | '/budget'
+    | '/expenses'
+    | '/auth/signin'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthLayoutRoute: typeof AuthLayoutRoute
+  BudgetRoute: typeof BudgetRoute
   ExpensesRoute: typeof ExpensesRoute
   AuthSigninRoute: typeof AuthSigninRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthLayoutRoute: AuthLayoutRoute,
+  BudgetRoute: BudgetRoute,
   ExpensesRoute: ExpensesRoute,
   AuthSigninRoute: AuthSigninRoute,
 }
@@ -116,12 +159,20 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/_auth-layout",
+        "/budget",
         "/expenses",
         "/auth/signin"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/_auth-layout": {
+      "filePath": "_auth-layout.tsx"
+    },
+    "/budget": {
+      "filePath": "budget.tsx"
     },
     "/expenses": {
       "filePath": "expenses.tsx"

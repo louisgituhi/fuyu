@@ -1,6 +1,6 @@
 import type React from "react"
 import { ChevronRight, Key, Activity } from "lucide-react"
-import { Button } from "../ui/button"
+import { Button } from "./ui/button"
 import { signOut, useSession } from "~/lib/auth-client"
 
 interface SettingsItemProps {
