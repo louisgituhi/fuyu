@@ -11,6 +11,7 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as SettingsImport } from './routes/settings'
 import { Route as ExpensesImport } from './routes/expenses'
 import { Route as BudgetImport } from './routes/budget'
 import { Route as AuthLayoutImport } from './routes/_auth-layout'
@@ -18,6 +19,12 @@ import { Route as IndexImport } from './routes/index'
 import { Route as AuthSigninImport } from './routes/auth/signin'
 
 // Create/Update Routes
+
+const SettingsRoute = SettingsImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const ExpensesRoute = ExpensesImport.update({
   id: '/expenses',
@@ -80,6 +87,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExpensesImport
       parentRoute: typeof rootRoute
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsImport
+      parentRoute: typeof rootRoute
+    }
     '/auth/signin': {
       id: '/auth/signin'
       path: '/auth/signin'
@@ -97,6 +111,7 @@ export interface FileRoutesByFullPath {
   '': typeof AuthLayoutRoute
   '/budget': typeof BudgetRoute
   '/expenses': typeof ExpensesRoute
+  '/settings': typeof SettingsRoute
   '/auth/signin': typeof AuthSigninRoute
 }
 
@@ -105,6 +120,7 @@ export interface FileRoutesByTo {
   '': typeof AuthLayoutRoute
   '/budget': typeof BudgetRoute
   '/expenses': typeof ExpensesRoute
+  '/settings': typeof SettingsRoute
   '/auth/signin': typeof AuthSigninRoute
 }
 
@@ -114,20 +130,22 @@ export interface FileRoutesById {
   '/_auth-layout': typeof AuthLayoutRoute
   '/budget': typeof BudgetRoute
   '/expenses': typeof ExpensesRoute
+  '/settings': typeof SettingsRoute
   '/auth/signin': typeof AuthSigninRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '' | '/budget' | '/expenses' | '/auth/signin'
+  fullPaths: '/' | '' | '/budget' | '/expenses' | '/settings' | '/auth/signin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/budget' | '/expenses' | '/auth/signin'
+  to: '/' | '' | '/budget' | '/expenses' | '/settings' | '/auth/signin'
   id:
     | '__root__'
     | '/'
     | '/_auth-layout'
     | '/budget'
     | '/expenses'
+    | '/settings'
     | '/auth/signin'
   fileRoutesById: FileRoutesById
 }
@@ -137,6 +155,7 @@ export interface RootRouteChildren {
   AuthLayoutRoute: typeof AuthLayoutRoute
   BudgetRoute: typeof BudgetRoute
   ExpensesRoute: typeof ExpensesRoute
+  SettingsRoute: typeof SettingsRoute
   AuthSigninRoute: typeof AuthSigninRoute
 }
 
@@ -145,6 +164,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthLayoutRoute: AuthLayoutRoute,
   BudgetRoute: BudgetRoute,
   ExpensesRoute: ExpensesRoute,
+  SettingsRoute: SettingsRoute,
   AuthSigninRoute: AuthSigninRoute,
 }
 
@@ -162,6 +182,7 @@ export const routeTree = rootRoute
         "/_auth-layout",
         "/budget",
         "/expenses",
+        "/settings",
         "/auth/signin"
       ]
     },
@@ -176,6 +197,9 @@ export const routeTree = rootRoute
     },
     "/expenses": {
       "filePath": "expenses.tsx"
+    },
+    "/settings": {
+      "filePath": "settings.tsx"
     },
     "/auth/signin": {
       "filePath": "auth/signin.tsx"

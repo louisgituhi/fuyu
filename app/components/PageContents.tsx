@@ -1,5 +1,5 @@
 import { Receipt, Settings, MapPin, Wallet, FileText } from "lucide-react";
-import SettingsContent from "./SettingsPage";
+import SettingsPage from "./SettingsContent";
 import ExpensesContent from "./ExpensesContent";
 import BudgetContent from "./BudgetContent";
 import SummaryTable from "./SummaryTable";
@@ -18,7 +18,7 @@ export default function PageContent({ title }: { title: string }) {
     }
 
     if (title === "Settings") {
-        return <SettingsContent />
+        return <SettingsPage />
     }
 
     const getIcon = () => {
