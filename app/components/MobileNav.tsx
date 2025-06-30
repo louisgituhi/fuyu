@@ -20,7 +20,7 @@ export default function MobileNav() {
     if ( location.pathname === "/") {
         return (
             <div className="min-h-screen bg-white">
-                <div className="p-4 border-b">
+                <div className="p-4 ">
                     <FuyuLogo />
                 </div>
                 <div className="text-center space-y-4 py-8">
@@ -36,7 +36,6 @@ export default function MobileNav() {
                         </>
                     )}
                 </div>
-                {/* navigation  */}
                 <div className="px-4 space-y-1">
                     { navigationItems.map((item) => (
                         <Link

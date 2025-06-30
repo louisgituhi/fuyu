@@ -55,7 +55,7 @@ export default function ExpenseForm() {
                         ) : budget ? (
                             <div className="space-y-0">
                                 <p className="text-sm font-medium uppercase tracking-wide">Active Budget</p>
-                                <p className="text-2xl font-bold">{budget.net_salary.toLocaleString()}</p>
+                                <p className="text-2xl font-bold">{ budget.net_salary.toLocaleString()}</p>
                                 <div className="w-12 h-1 rounded-full mx-auto mt-1" />
                             </div>
                         ) : (
