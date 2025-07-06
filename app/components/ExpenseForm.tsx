@@ -4,10 +4,12 @@ import { Label } from "./ui/label"
 import { Button } from "./ui/button"
 import { expenseSchema } from "~/lib/definations"
 import { useForm } from "@tanstack/react-form"
+import { useNavigate } from "@tanstack/react-router"
 import { useActiveBudget } from "~/hooks/isActiveBudget"
 export default function ExpenseForm() {
 
     const { data: budget, isLoading } = useActiveBudget()
+    const navigate = useNavigate()
     const form = useForm({
         defaultValues: {
             expenses_type: "",
@@ -38,7 +40,10 @@ export default function ExpenseForm() {
             throw new Error(`Request failed: ${ res.status } - ${ errorText }`)
         }
 
-            return res.json()
+        navigate({
+            to: "/"
+        })
+        return res.json()
         }   
     })
 

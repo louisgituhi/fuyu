@@ -90,11 +90,6 @@ export const columns: ColumnDef<Transactions>[] = [
         },
         cell: ({ row }) => {
             const amount = Number.parseFloat(row.getValue("amount"))
-            // const formatted = new Intl.NumberFormat('en-US', {
-            //     style: "currency",
-            //     currency: "ksh"
-            // }).format(amount)
-
             return <div className=" font-jetbrains">
                 { amount }
             </div>
@@ -112,10 +107,6 @@ export const columns: ColumnDef<Transactions>[] = [
         },
         cell: ({ row }) => {
             const cost = Number.parseFloat(row.getValue("transaction_cost"))
-            // const formatted = new Intl.NumberFormat("en-US", {
-            //     style: "currency",
-            //     currency: "KES"
-            // }).format(cost)
 
             return <div className="text-muted-foreground font-jetbrains">{cost}</div>
         }
@@ -160,7 +151,7 @@ export const columns: ColumnDef<Transactions>[] = [
         header: "Expense Type",
         cell: ({ row }) => {
             const type = row.getValue("expenses_type") as string
-            const colorClass = type === "Need" ? "bg-orange-400" : type === "Want" ? "bg-purple-400" : "bg-green-300"
+            const colorClass = type === "Need" ? "bg-green-400" : type === "Want" ? "bg-purple-400" : "bg-orange-300"
 
             return (
                 <div className="flex items-center gap-2">

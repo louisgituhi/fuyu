@@ -3,6 +3,8 @@ import { budgetSchema } from "~/lib/definations"
 import { Card, CardContent } from "./ui/card"
 import { Button } from "./ui/button"
 import { useSession } from "~/lib/auth-client"
+import { useNavigate } from "@tanstack/react-router"
+
 export default function BudgetForm() {
 
     const { data } = useSession();
@@ -17,6 +19,7 @@ export default function BudgetForm() {
             onChange: budgetSchema
         },
         onSubmit: async ({ value }) => {
+            const navigate = useNavigate()
             console.log(value)
             const res = await fetch('/api/add-budget', {
                 method: 'POST',
@@ -32,7 +35,9 @@ export default function BudgetForm() {
                 const errorText = await res.text()
                 throw new Error(`Request failed: ${ res.status } - ${ errorText }`)
             }
-
+            navigate({
+                to: "/"
+            })
             return res.json()
         } 
     })

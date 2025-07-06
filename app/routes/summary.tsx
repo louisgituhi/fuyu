@@ -11,7 +11,7 @@ function TransactionsPage() {
     return (
         <DashboardLayout>
             <div className="min-h-screen bg-white md:bg-gray-50">
-                <MobileHeader title="Settings" />
+                <MobileHeader title="Summary" />
                     <div className="p-4 md:p-8">
                         <TransactionsTable />
                     </div>

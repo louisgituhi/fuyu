@@ -6,7 +6,7 @@ import { useSession } from "~/lib/auth-client";
 
 const navigationItems = [
     { id: "expenses", label: "Expenses", icon: Sparkles, href: "/expenses" },
-    { id: "wallet", label: "Budget", icon: Wallet, href: "/budget" },
+    { id: "budget", label: "Budget", icon: Wallet, href: "/budget" },
     { id: "summary", label: "Summary", icon: FileText, href: "/summary" },
     { id: "addresses", label: "Addresses", icon: MapPin, href: "/addresses" },
     { id: "settings", label: "Settings", icon: Settings, href: "/settings" },
