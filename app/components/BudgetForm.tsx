@@ -4,6 +4,18 @@ import { Card, CardContent } from "./ui/card"
 import { Button } from "./ui/button"
 import { useSession } from "~/lib/auth-client"
 import { useNavigate } from "@tanstack/react-router"
+import type { AnyFieldApi } from "@tanstack/react-form"
+
+function FieldInfo({ field }: { field: AnyFieldApi }) {
+    return (
+        <>
+            { field.state.meta.isTouched && !field.state.meta.isValid ? (
+                <em className="text-red-500">{ field.state.meta.errors.map((err) => err.message).join(',') }</em>
+            ): null }
+            {field.state.meta.isValidating ? 'Validating...' : null}
+        </>
+    )
+}
 
 export default function BudgetForm() {
 
@@ -49,6 +61,7 @@ export default function BudgetForm() {
                     <CardContent className="p-6">
                         <h2 className="text-lg font-semibold mb-4">Add Salary Information</h2>
                         <form
+                            autoComplete="off"
                             className="space-y-4"
                             onSubmit={(e) => {
                             e.preventDefault()
@@ -76,9 +89,7 @@ export default function BudgetForm() {
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                             />
 
-                                            {!field.state.meta.isValid && (
-                                                <em className=" text-red-500">{field.state.meta.errors.join(', ')}</em>
-                                            )}
+                                           <FieldInfo field={field} />
 
                                         </div>
                                     )}
@@ -103,9 +114,7 @@ export default function BudgetForm() {
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                             />
 
-                                            {!field.state.meta.isValid && (
-                                                <em className=" text-red-500">{field.state.meta.errors.join(', ')}</em>
-                                            )}
+                                            <FieldInfo field={field} />
 
                                         </div>
                                     )}
@@ -130,9 +139,7 @@ export default function BudgetForm() {
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                             />
 
-                                            {!field.state.meta.isValid && (
-                                                <em className=" text-red-500">{field.state.meta.errors.join(', ')}</em>
-                                            )}
+                                            <FieldInfo field={field} />
 
                                         </div>
                                     )}
@@ -158,9 +165,7 @@ export default function BudgetForm() {
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                             />
 
-                                            {!field.state.meta.isValid && (
-                                                <em className=" text-red-500">{field.state.meta.errors.join(', ')}</em>
-                                            )}
+                                            <FieldInfo field={field} />
 
                                         </div>
                                     )}

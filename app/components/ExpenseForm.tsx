@@ -6,6 +6,19 @@ import { expenseSchema } from "~/lib/definations"
 import { useForm } from "@tanstack/react-form"
 import { useNavigate } from "@tanstack/react-router"
 import { useActiveBudget } from "~/hooks/isActiveBudget"
+import type { AnyFieldApi } from "@tanstack/react-form"
+
+
+function FieldInfo({ field }: { field: AnyFieldApi }) {
+    return (
+        <>
+            { field.state.meta.isTouched && !field.state.meta.isValid ? (
+                <em className="text-red-500">{ field.state.meta.errors.map((err) => err.message).join(',') }</em>
+            ): null }
+            {field.state.meta.isValidating ? 'Validating...' : null}
+        </>
+    )
+}
 export default function ExpenseForm() {
 
     const { data: budget, isLoading } = useActiveBudget()
@@ -16,70 +29,46 @@ export default function ExpenseForm() {
             expenses_category: "",
             amount: "",
             transaction_cost: ""
-    },
-    validators: {
-        onChange: expenseSchema
-    },
-    onSubmit: async ({ value }) => {
-        if (!budget.id) {
-            throw new Error("No active budget found")
-        }
-        const res = await fetch("/api/add-expenses", { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                ...value,
-                budget_id: budget.id
-            }),
-        })
+        },
+        validators: {
+            onChange: expenseSchema
+        },
+        onSubmit: async ({ value }) => {
+            if (!budget.id) {
+                throw new Error("No active budget found")
+            }
+            const res = await fetch("/api/add-expenses", { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...value,
+                    budget_id: budget.id
+                }),
+            })
 
-        if (!res.ok) {
-            const errorText = await res.text()
-            throw new Error(`Request failed: ${ res.status } - ${ errorText }`)
-        }
+            if (!res.ok) {
+                const errorText = await res.text()
+                throw new Error(`Request failed: ${ res.status } - ${ errorText }`)
+            }
 
-        navigate({
-            to: "/"
+            navigate({
+                to: "/"
+            })
+            return res.json()
+            }   
         })
-        return res.json()
-        }   
-    })
 
     return (
         <div>
-            <Card className="bg-green-100 text-black shadow-lg hover:shadow-xl transition-all duration-300 mb-4">
-                <CardContent className="p-3">
-                    <div className="text-center">
-                        {isLoading ? (
-                            <div className="space-y-2">
-                                <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto" />
-                                <p className="text-sm">Loading active budget...</p>
-                            </div>
-                        ) : budget ? (
-                            <div className="space-y-0">
-                                <p className="text-sm font-medium uppercase tracking-wide">Active Budget</p>
-                                <p className="text-2xl font-bold">{ budget.net_salary.toLocaleString()}</p>
-                                <div className="w-12 h-1 rounded-full mx-auto mt-1" />
-                            </div>
-                        ) : (
-                            <div className="space-y-2">
-                                <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mx-auto">
-                                    <span className="text-red-600 text-lg">!</span>
-                                </div>
-                                <p className="text-sm text-green-600">No active budget</p>
-                            </div>
-                        )}
-                    </div>
-                </CardContent>
-            </Card>
             <h1 className="text-2xl font-bold text-gray-900 mb-6">Purchases</h1>
         
             <Card className="mb-8">
                 <CardContent className="p-6">
                     <h2 className="text-lg font-semibold mb-4">Add New Purchase</h2>
-                    <form 
+                    <form
+                        autoComplete="off"
                         className="space-y-4"
                         onSubmit={(e) => {
                           e.preventDefault()
@@ -171,9 +160,7 @@ export default function ExpenseForm() {
                                             placeholder="0.00"
                                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                         />
-                                        {!field.state.meta.isValid && (
-                                            <em className=" text-red-500">{field.state.meta.errors.join(', ')}</em>
-                                        )}
+                                        <FieldInfo field={field} />
                                     </div>
                               )}
                             </form.Field>
@@ -192,9 +179,7 @@ export default function ExpenseForm() {
                                             placeholder="0.00"
                                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" 
                                         />
-                                        {!field.state.meta.isValid && (
-                                            <em className=" text-red-500">{field.state.meta.errors.join(', ')}</em>
-                                        )}
+                                        <FieldInfo field={field} />
                                     </div>
                                 )}
                             </form.Field>
