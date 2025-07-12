@@ -47,13 +47,13 @@ export const expenseSchema = z.object({
         .min(1, "Amount is required")
         .transform((val) => Number.parseFloat(val))
         .refine((val) => !Number.isNaN(val) && val > 0, {
-            message: "Amount must be a valid number greater than 0"
+            message: "Amount must be a number greater than 0"
         }),
     transaction_cost: z
         .string()
         .min(1, "Transaction amount is required")
         .transform((val) => Number.parseFloat(val))
         .refine((val) => !Number.isNaN(val) && val >= 0, {
-        message: "Transaction amount must be a valid number greater than or equal to 0",
+        message: "Transaction amount must be a number",
         }),
 })

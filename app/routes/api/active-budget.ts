@@ -6,7 +6,7 @@ import { auth } from '~/lib/auth'
 
 export const APIRoute = createAPIFileRoute('/api/active-budget')({
   GET: async ({ request }) => {
-
+    
     try {
       const session = await auth.api.getSession({
         headers: request.headers
