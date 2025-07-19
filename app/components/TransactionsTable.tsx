@@ -25,7 +25,7 @@ import { Input } from "./ui/input"
 import { Button } from "./ui/button"
 import { Table, TableCell, TableHeader, TableRow, TableBody, TableHead } from "./ui/table"
 import { useQuery } from "@tanstack/react-query"
-
+import ExpenseType from "./ExpenseType"
 
 async function fetchExpenses() {
     const res = await fetch("/api/expenses")
@@ -219,9 +219,10 @@ export default function TransactionsTable() {
 
     return (
         <div className="w-full p-6">
+            <ExpenseType />
             <div className="mb-6">
-                <h1 className="text-2xl font-bold">Transactions</h1>
-                <p className="text-muted-foreground">Manage and view your transaction history</p>
+                <h1 className="text-lg font-bold">Transactions</h1>
+                <p className="text-muted-foreground text-sm">Manage and view your transaction history</p>
             </div>
             <div className="flex items-center py-4">
                 <Input
