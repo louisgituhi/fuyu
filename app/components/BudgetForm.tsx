@@ -56,10 +56,10 @@ export default function BudgetForm() {
 
     return (
             <div>
-                <h1 className="text-2xl font-bold text-gray-900 mb-6">Wallet</h1>
+                <h1 className="text-2xl font-bold text-gray-900 mb-6">Net income</h1>
                 <Card className="mb-8">
                     <CardContent className="p-6">
-                        <h2 className="text-lg font-semibold mb-4">Add Salary Information</h2>
+                        <h2 className="text-md font-semibold mb-4">Add income data</h2>
                         <form
                             autoComplete="off"
                             className="space-y-4"
