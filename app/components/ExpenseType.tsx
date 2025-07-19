@@ -66,8 +66,7 @@ export default function ExpenseType({ netIncome = 35440 }: ExpenseTypeProps) {
     const expenseEntries = Object.entries(totals)
 
     return (
-        <div className="rounded-xl border p-6 shadow-sm bg-white dark:bg-zinc-900">
-            {/* <h2 className="text-xl font-semibold mb-6">Expense Breakdown</h2> */}
+        <div className="rounded-xl border p-6 shadow-sm bg-white dark:bg-zinc-900 mb-4">
 
             <div className="flex items-stretch">
                 { expenseEntries.map(([type, total], index) => {
