@@ -1,4 +1,4 @@
-import { Check, AlertTriangle } from "lucide-react"
+import { CircleCheck, AlertTriangle } from "lucide-react"
 import { expenseTypes } from "~/hooks/isExpenseType"
 interface ExpenseTypeProps {
   netIncome?: number
@@ -31,7 +31,7 @@ export default function ExpenseType({ netIncome = 35440 }: ExpenseTypeProps) {
                     percentage,
                     isWithinBudget: percentage <= 50,
                     limit: 50,
-                    icon: percentage <= 50 ? Check : AlertTriangle,
+                    icon: percentage <= 50 ? CircleCheck : AlertTriangle,
                     textColor: percentage <= 50 ? "text-green-600" : "text-red-500",
                 }
             case "want":
@@ -40,7 +40,7 @@ export default function ExpenseType({ netIncome = 35440 }: ExpenseTypeProps) {
                     percentage,
                     isWithinBudget: percentage <= 30,
                     limit: 30,
-                    icon: percentage <= 30 ? Check : AlertTriangle,
+                    icon: percentage <= 30 ? CircleCheck : AlertTriangle,
                     textColor: percentage <= 30 ? "text-green-600" : "text-red-500",
                 }
             case "saving":
@@ -49,7 +49,7 @@ export default function ExpenseType({ netIncome = 35440 }: ExpenseTypeProps) {
                     percentage,
                     isWithinBudget: percentage >= 20,
                     limit: 20,
-                    icon: percentage >= 20 ? Check : AlertTriangle,
+                    icon: percentage >= 20 ? CircleCheck : AlertTriangle,
                     textColor: percentage >= 20 ? "text-green-600" : "text-red-500",
                 }
             default:
@@ -57,7 +57,7 @@ export default function ExpenseType({ netIncome = 35440 }: ExpenseTypeProps) {
             percentage,
             isWithinBudget: true,
             limit: 0,
-            icon: Check,
+            icon: CircleCheck,
             textColor: "text-gray-600",
             }
         }
