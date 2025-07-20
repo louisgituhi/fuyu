@@ -10,7 +10,7 @@ function AnalyticsPage() {
 	return (
 		<DashboardLayout>
 			<div className="min-h-screen bg-white md:bg-gray-50">
-				<MobileHeader title="Summary" />
+				<MobileHeader title="Analytics" />
 				<div className="p-4 md:p-8">
 					<h1>Analytics</h1>
 				</div>
