@@ -197,7 +197,7 @@ export default function ExpenseForm() {
 						</div>
 						<form.Subscribe
 							selector={(state) => [state.canSubmit, state.isSubmitting]}
-							// biome-ignore lint/correctness/noChildrenProp: <explanation>
+							// biome-ignore lint/correctness/noChildrenProp: false positive
 							children={([canSubmit, isSubmitting]) => (
 								<Button
 									type="submit"

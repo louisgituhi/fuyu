@@ -10,223 +10,223 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as SummaryImport } from './routes/summary'
-import { Route as SettingsImport } from './routes/settings'
-import { Route as ExpensesImport } from './routes/expenses'
-import { Route as BudgetImport } from './routes/budget'
-import { Route as AnalyticsImport } from './routes/analytics'
-import { Route as AuthLayoutImport } from './routes/_auth-layout'
-import { Route as IndexImport } from './routes/index'
-import { Route as AuthSigninImport } from './routes/auth/signin'
+import { Route as rootRoute } from "./routes/__root";
+import { Route as SummaryImport } from "./routes/summary";
+import { Route as SettingsImport } from "./routes/settings";
+import { Route as ExpensesImport } from "./routes/expenses";
+import { Route as BudgetImport } from "./routes/budget";
+import { Route as AnalyticsImport } from "./routes/analytics";
+import { Route as AuthLayoutImport } from "./routes/_auth-layout";
+import { Route as IndexImport } from "./routes/index";
+import { Route as AuthSigninImport } from "./routes/auth/signin";
 
 // Create/Update Routes
 
 const SummaryRoute = SummaryImport.update({
-  id: '/summary',
-  path: '/summary',
-  getParentRoute: () => rootRoute,
-} as any)
+	id: "/summary",
+	path: "/summary",
+	getParentRoute: () => rootRoute,
+} as any);
 
 const SettingsRoute = SettingsImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => rootRoute,
-} as any)
+	id: "/settings",
+	path: "/settings",
+	getParentRoute: () => rootRoute,
+} as any);
 
 const ExpensesRoute = ExpensesImport.update({
-  id: '/expenses',
-  path: '/expenses',
-  getParentRoute: () => rootRoute,
-} as any)
+	id: "/expenses",
+	path: "/expenses",
+	getParentRoute: () => rootRoute,
+} as any);
 
 const BudgetRoute = BudgetImport.update({
-  id: '/budget',
-  path: '/budget',
-  getParentRoute: () => rootRoute,
-} as any)
+	id: "/budget",
+	path: "/budget",
+	getParentRoute: () => rootRoute,
+} as any);
 
 const AnalyticsRoute = AnalyticsImport.update({
-  id: '/analytics',
-  path: '/analytics',
-  getParentRoute: () => rootRoute,
-} as any)
+	id: "/analytics",
+	path: "/analytics",
+	getParentRoute: () => rootRoute,
+} as any);
 
 const AuthLayoutRoute = AuthLayoutImport.update({
-  id: '/_auth-layout',
-  getParentRoute: () => rootRoute,
-} as any)
+	id: "/_auth-layout",
+	getParentRoute: () => rootRoute,
+} as any);
 
 const IndexRoute = IndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
+	id: "/",
+	path: "/",
+	getParentRoute: () => rootRoute,
+} as any);
 
 const AuthSigninRoute = AuthSigninImport.update({
-  id: '/auth/signin',
-  path: '/auth/signin',
-  getParentRoute: () => rootRoute,
-} as any)
+	id: "/auth/signin",
+	path: "/auth/signin",
+	getParentRoute: () => rootRoute,
+} as any);
 
 // Populate the FileRoutesByPath interface
 
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/_auth-layout': {
-      id: '/_auth-layout'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AuthLayoutImport
-      parentRoute: typeof rootRoute
-    }
-    '/analytics': {
-      id: '/analytics'
-      path: '/analytics'
-      fullPath: '/analytics'
-      preLoaderRoute: typeof AnalyticsImport
-      parentRoute: typeof rootRoute
-    }
-    '/budget': {
-      id: '/budget'
-      path: '/budget'
-      fullPath: '/budget'
-      preLoaderRoute: typeof BudgetImport
-      parentRoute: typeof rootRoute
-    }
-    '/expenses': {
-      id: '/expenses'
-      path: '/expenses'
-      fullPath: '/expenses'
-      preLoaderRoute: typeof ExpensesImport
-      parentRoute: typeof rootRoute
-    }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsImport
-      parentRoute: typeof rootRoute
-    }
-    '/summary': {
-      id: '/summary'
-      path: '/summary'
-      fullPath: '/summary'
-      preLoaderRoute: typeof SummaryImport
-      parentRoute: typeof rootRoute
-    }
-    '/auth/signin': {
-      id: '/auth/signin'
-      path: '/auth/signin'
-      fullPath: '/auth/signin'
-      preLoaderRoute: typeof AuthSigninImport
-      parentRoute: typeof rootRoute
-    }
-  }
+declare module "@tanstack/react-router" {
+	interface FileRoutesByPath {
+		"/": {
+			id: "/";
+			path: "/";
+			fullPath: "/";
+			preLoaderRoute: typeof IndexImport;
+			parentRoute: typeof rootRoute;
+		};
+		"/_auth-layout": {
+			id: "/_auth-layout";
+			path: "";
+			fullPath: "";
+			preLoaderRoute: typeof AuthLayoutImport;
+			parentRoute: typeof rootRoute;
+		};
+		"/analytics": {
+			id: "/analytics";
+			path: "/analytics";
+			fullPath: "/analytics";
+			preLoaderRoute: typeof AnalyticsImport;
+			parentRoute: typeof rootRoute;
+		};
+		"/budget": {
+			id: "/budget";
+			path: "/budget";
+			fullPath: "/budget";
+			preLoaderRoute: typeof BudgetImport;
+			parentRoute: typeof rootRoute;
+		};
+		"/expenses": {
+			id: "/expenses";
+			path: "/expenses";
+			fullPath: "/expenses";
+			preLoaderRoute: typeof ExpensesImport;
+			parentRoute: typeof rootRoute;
+		};
+		"/settings": {
+			id: "/settings";
+			path: "/settings";
+			fullPath: "/settings";
+			preLoaderRoute: typeof SettingsImport;
+			parentRoute: typeof rootRoute;
+		};
+		"/summary": {
+			id: "/summary";
+			path: "/summary";
+			fullPath: "/summary";
+			preLoaderRoute: typeof SummaryImport;
+			parentRoute: typeof rootRoute;
+		};
+		"/auth/signin": {
+			id: "/auth/signin";
+			path: "/auth/signin";
+			fullPath: "/auth/signin";
+			preLoaderRoute: typeof AuthSigninImport;
+			parentRoute: typeof rootRoute;
+		};
+	}
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '': typeof AuthLayoutRoute
-  '/analytics': typeof AnalyticsRoute
-  '/budget': typeof BudgetRoute
-  '/expenses': typeof ExpensesRoute
-  '/settings': typeof SettingsRoute
-  '/summary': typeof SummaryRoute
-  '/auth/signin': typeof AuthSigninRoute
+	"/": typeof IndexRoute;
+	"": typeof AuthLayoutRoute;
+	"/analytics": typeof AnalyticsRoute;
+	"/budget": typeof BudgetRoute;
+	"/expenses": typeof ExpensesRoute;
+	"/settings": typeof SettingsRoute;
+	"/summary": typeof SummaryRoute;
+	"/auth/signin": typeof AuthSigninRoute;
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '': typeof AuthLayoutRoute
-  '/analytics': typeof AnalyticsRoute
-  '/budget': typeof BudgetRoute
-  '/expenses': typeof ExpensesRoute
-  '/settings': typeof SettingsRoute
-  '/summary': typeof SummaryRoute
-  '/auth/signin': typeof AuthSigninRoute
+	"/": typeof IndexRoute;
+	"": typeof AuthLayoutRoute;
+	"/analytics": typeof AnalyticsRoute;
+	"/budget": typeof BudgetRoute;
+	"/expenses": typeof ExpensesRoute;
+	"/settings": typeof SettingsRoute;
+	"/summary": typeof SummaryRoute;
+	"/auth/signin": typeof AuthSigninRoute;
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/_auth-layout': typeof AuthLayoutRoute
-  '/analytics': typeof AnalyticsRoute
-  '/budget': typeof BudgetRoute
-  '/expenses': typeof ExpensesRoute
-  '/settings': typeof SettingsRoute
-  '/summary': typeof SummaryRoute
-  '/auth/signin': typeof AuthSigninRoute
+	__root__: typeof rootRoute;
+	"/": typeof IndexRoute;
+	"/_auth-layout": typeof AuthLayoutRoute;
+	"/analytics": typeof AnalyticsRoute;
+	"/budget": typeof BudgetRoute;
+	"/expenses": typeof ExpensesRoute;
+	"/settings": typeof SettingsRoute;
+	"/summary": typeof SummaryRoute;
+	"/auth/signin": typeof AuthSigninRoute;
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | ''
-    | '/analytics'
-    | '/budget'
-    | '/expenses'
-    | '/settings'
-    | '/summary'
-    | '/auth/signin'
-  fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | ''
-    | '/analytics'
-    | '/budget'
-    | '/expenses'
-    | '/settings'
-    | '/summary'
-    | '/auth/signin'
-  id:
-    | '__root__'
-    | '/'
-    | '/_auth-layout'
-    | '/analytics'
-    | '/budget'
-    | '/expenses'
-    | '/settings'
-    | '/summary'
-    | '/auth/signin'
-  fileRoutesById: FileRoutesById
+	fileRoutesByFullPath: FileRoutesByFullPath;
+	fullPaths:
+		| "/"
+		| ""
+		| "/analytics"
+		| "/budget"
+		| "/expenses"
+		| "/settings"
+		| "/summary"
+		| "/auth/signin";
+	fileRoutesByTo: FileRoutesByTo;
+	to:
+		| "/"
+		| ""
+		| "/analytics"
+		| "/budget"
+		| "/expenses"
+		| "/settings"
+		| "/summary"
+		| "/auth/signin";
+	id:
+		| "__root__"
+		| "/"
+		| "/_auth-layout"
+		| "/analytics"
+		| "/budget"
+		| "/expenses"
+		| "/settings"
+		| "/summary"
+		| "/auth/signin";
+	fileRoutesById: FileRoutesById;
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AuthLayoutRoute: typeof AuthLayoutRoute
-  AnalyticsRoute: typeof AnalyticsRoute
-  BudgetRoute: typeof BudgetRoute
-  ExpensesRoute: typeof ExpensesRoute
-  SettingsRoute: typeof SettingsRoute
-  SummaryRoute: typeof SummaryRoute
-  AuthSigninRoute: typeof AuthSigninRoute
+	IndexRoute: typeof IndexRoute;
+	AuthLayoutRoute: typeof AuthLayoutRoute;
+	AnalyticsRoute: typeof AnalyticsRoute;
+	BudgetRoute: typeof BudgetRoute;
+	ExpensesRoute: typeof ExpensesRoute;
+	SettingsRoute: typeof SettingsRoute;
+	SummaryRoute: typeof SummaryRoute;
+	AuthSigninRoute: typeof AuthSigninRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AuthLayoutRoute: AuthLayoutRoute,
-  AnalyticsRoute: AnalyticsRoute,
-  BudgetRoute: BudgetRoute,
-  ExpensesRoute: ExpensesRoute,
-  SettingsRoute: SettingsRoute,
-  SummaryRoute: SummaryRoute,
-  AuthSigninRoute: AuthSigninRoute,
-}
+	IndexRoute: IndexRoute,
+	AuthLayoutRoute: AuthLayoutRoute,
+	AnalyticsRoute: AnalyticsRoute,
+	BudgetRoute: BudgetRoute,
+	ExpensesRoute: ExpensesRoute,
+	SettingsRoute: SettingsRoute,
+	SummaryRoute: SummaryRoute,
+	AuthSigninRoute: AuthSigninRoute,
+};
 
 export const routeTree = rootRoute
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+	._addFileChildren(rootRouteChildren)
+	._addFileTypes<FileRouteTypes>();
 
 /* ROUTE_MANIFEST_START
 {

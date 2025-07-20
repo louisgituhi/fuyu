@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: false postive
 export function NotFound({ children }: { children?: any }) {
 	return (
 		<div className="space-y-2 p-2">
