@@ -90,7 +90,7 @@ export const columns: ColumnDef<Transactions>[] = [
         },
         cell: ({ row }) => {
             const amount = Number.parseFloat(row.getValue("amount"))
-            return <div className=" font-jetbrains">
+            return <div className=" font-inconsolata">
                 { amount }
             </div>
         },
@@ -108,7 +108,7 @@ export const columns: ColumnDef<Transactions>[] = [
         cell: ({ row }) => {
             const cost = Number.parseFloat(row.getValue("transaction_cost"))
 
-            return <div className="text-muted-foreground font-jetbrains">{cost}</div>
+            return <div className="text-muted-foreground font-inconsolata">{cost}</div>
         }
     },
     {

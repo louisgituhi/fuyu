@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback } from "./ui/avatar";
-import { Settings, MapPin, Wallet, Sparkles, FileText, ChevronRight } from "lucide-react";
+import { Settings, ChartLine, Wallet, Sparkles, FileText, ChevronRight } from "lucide-react";
 import FuyuLogo from "./FuyuLogo";
 import { useRouterState, Link } from "@tanstack/react-router";
 import { useSession } from "~/lib/auth-client";
@@ -8,7 +8,7 @@ const navigationItems = [
     { id: "expenses", label: "Expenses", icon: Sparkles, href: "/expenses" },
     { id: "budget", label: "Budget", icon: Wallet, href: "/budget" },
     { id: "summary", label: "Summary", icon: FileText, href: "/summary" },
-    { id: "addresses", label: "Addresses", icon: MapPin, href: "/addresses" },
+    { id: "analytics", label: "Analytics", icon: ChartLine, href: "/analytics" },
     { id: "settings", label: "Settings", icon: Settings, href: "/settings" },
 ]
 
