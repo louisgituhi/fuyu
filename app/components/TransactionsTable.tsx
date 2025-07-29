@@ -34,12 +34,6 @@ import {
 	TableRow,
 } from "./ui/table";
 
-async function fetchExpenses() {
-	const res = await fetch("/api/expenses");
-	if (!res.ok) throw new Error("Failed to fetch expenses");
-	return res.json();
-}
-
 export type Transactions = {
 	id: number;
 	budget_id: number;
@@ -226,7 +220,11 @@ export const columns: ColumnDef<Transactions>[] = [
 export default function TransactionsTable() {
 	const { data = [] } = useQuery({
 		queryKey: ["expenses"],
-		queryFn: fetchExpenses,
+		queryFn: async () => {
+			const res = await fetch("/api/expenses");
+			if (!res.ok) throw new Error("Failed to fetch expenses");
+			return res.json();
+		},
 	});
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
