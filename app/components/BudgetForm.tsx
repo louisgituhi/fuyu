@@ -4,7 +4,8 @@ import { useNavigate } from "@tanstack/react-router";
 import { useSession } from "~/lib/auth-client";
 import { budgetSchema } from "~/lib/definations";
 import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 
 function FieldInfo({ field }: { field: AnyFieldApi }) {
 	return (
@@ -56,134 +57,152 @@ export default function BudgetForm() {
 	});
 
 	return (
-		<div>
-			<h1 className="text-2xl font-bold text-gray-900 mb-6">Net income</h1>
-			<Card className="mb-8">
-				<CardContent className="p-6">
-					<h2 className="text-md font-semibold mb-4">Add income data</h2>
-					<form
-						autoComplete="off"
-						className="space-y-4"
-						onSubmit={(e) => {
-							e.preventDefault();
-							e.stopPropagation();
-							void form.handleSubmit();
-						}}
-					>
-						<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-							<form.Field name="net_salary">
-								{(field) => (
-									<div className="space-y-2">
-										<label
-											htmlFor="net-salary"
-											className="text-sm font-medium text-gray-700"
-										>
-											Net Salary
-										</label>
-
-										<input
-											id={field.name}
-											name={field.name}
-											value={field.state.value}
-											onChange={(e) => field.handleChange(e.target.value)}
-											placeholder="0.00"
-											className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-										/>
-
-										<FieldInfo field={field} />
-									</div>
-								)}
-							</form.Field>
-
-							<form.Field name="period_start">
-								{(field) => (
-									<div className="space-y-2">
-										<label
-											htmlFor="start date"
-											className="text-sm font-medium text-gray-700"
-										>
-											Start date
-										</label>
-
-										<input
-											id={field.name}
-											name={field.name}
-											value={field.state.value}
-											onChange={(e) => field.handleChange(e.target.value)}
-											type="date"
-											className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-										/>
-
-										<FieldInfo field={field} />
-									</div>
-								)}
-							</form.Field>
-
-							<form.Field name="period_end">
-								{(field) => (
-									<div className="space-y-2">
-										<label
-											htmlFor="end date"
-											className="text-sm font-medium text-gray-700"
-										>
-											End date
-										</label>
-
-										<input
-											id={field.name}
-											name={field.name}
-											value={field.state.value}
-											onChange={(e) => field.handleChange(e.target.value)}
-											type="date"
-											className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-										/>
-
-										<FieldInfo field={field} />
-									</div>
-								)}
-							</form.Field>
-
-							<form.Field name="label">
-								{(field) => (
-									<div className="space-y-2">
-										<label
-											htmlFor="start date"
-											className="text-sm font-medium text-gray-700"
-										>
-											Label
-										</label>
-
-										<input
-											id={field.name}
-											name={field.name}
-											value={field.state.value}
-											onChange={(e) => field.handleChange(e.target.value)}
-											type="text"
-											placeholder="June 2025"
-											className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-										/>
-
-										<FieldInfo field={field} />
-									</div>
-								)}
-							</form.Field>
+		<div className="min-h-screen bg-gray-50 p-4">
+			<div className=" mx-auto max-w-lg">
+				<div className="mb-8 flex items-center justify-between bg-white p-4 shadow-sm">
+					<div className="flex items-center gap-3">
+						<div className="flex h-8 w-8 items-center justify-center bg-[#2CFF05] text-sm font-medium text-white">
+							1
 						</div>
-						<form.Subscribe
-							selector={(state) => [state.canSubmit, state.isSubmitting]}
-							// biome-ignore lint/correctness/noChildrenProp: false positive
-							children={([canSubmit, isSubmitting]) => (
-								<Button
-									type="submit"
-									disabled={!canSubmit}
-									className="w-full bg-[#FF4B33] hover:bg-gray-200 text-gray-900 font-medium py-3 rounded-lg"
-								>
-									{isSubmitting ? "..." : "Add Salary Record"}
-								</Button>
-							)}
-						/>
-					</form>
-				</CardContent>
-			</Card>
+						<span className="font-medium text-gray-900">
+							Budget Information
+						</span>
+					</div>
+					<div className="flex gap-1">
+						<div className="h-5 w-2 bg-[#FF4B33]"></div>
+						<div className="h-5 w-2 bg-[#FF4B33]"></div>
+						<div className="h-5 w-2 bg-[#FF4B33]"></div>
+						<div className="h-5 w-2 bg-[#FF4B33]"></div>
+					</div>
+				</div>
+				<div className="mb-8">
+					<h2 className="mb-2 text-xl font-semibold text-gray-900">
+						Budget details
+					</h2>
+					<p className="text-sm text-gray-600">Enter your budget details.</p>
+				</div>
+
+				<div className="space-y-6">
+					<div className="space-y-2">
+						<form
+							autoComplete="off"
+							onSubmit={(e) => {
+								e.preventDefault();
+								e.stopPropagation();
+								void form.handleSubmit();
+							}}
+						>
+							<div className="space-y-2">
+								<form.Field name="net_salary">
+									{(field) => (
+										<div className="space-y-2">
+											<Label
+												htmlFor="net-salary"
+												className="text-sm font-medium text-gray-700"
+											>
+												Enter income
+											</Label>
+											<Input
+												id={field.name}
+												name={field.name}
+												value={field.state.value}
+												onChange={(e) => field.handleChange(e.target.value)}
+												placeholder="0.00"
+												className="w-full px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+											/>
+											<FieldInfo field={field} />
+										</div>
+									)}
+								</form.Field>
+
+								<form.Field name="period_start">
+									{(field) => (
+										<div className="space-y-2">
+											<Label
+												htmlFor="start date"
+												className="text-sm font-medium text-gray-700"
+											>
+												Start date
+											</Label>
+
+											<Input
+												id={field.name}
+												name={field.name}
+												value={field.state.value}
+												onChange={(e) => field.handleChange(e.target.value)}
+												type="date"
+												className="w-full px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+											/>
+
+											<FieldInfo field={field} />
+										</div>
+									)}
+								</form.Field>
+
+								<form.Field name="period_end">
+									{(field) => (
+										<div className="space-y-2">
+											<Label
+												htmlFor="end date"
+												className="text-sm font-medium text-gray-700"
+											>
+												End date
+											</Label>
+
+											<Input
+												id={field.name}
+												name={field.name}
+												value={field.state.value}
+												onChange={(e) => field.handleChange(e.target.value)}
+												type="date"
+												className="w-full px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+											/>
+
+											<FieldInfo field={field} />
+										</div>
+									)}
+								</form.Field>
+
+								<form.Field name="label">
+									{(field) => (
+										<div className="space-y-2">
+											<Label
+												htmlFor="start date"
+												className="text-sm font-medium text-gray-700"
+											>
+												Label
+											</Label>
+											<Input
+												id={field.name}
+												name={field.name}
+												value={field.state.value}
+												onChange={(e) => field.handleChange(e.target.value)}
+												type="text"
+												placeholder="Month 2025"
+												className="w-full px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+											/>
+											<FieldInfo field={field} />
+										</div>
+									)}
+								</form.Field>
+							</div>
+							<form.Subscribe
+								selector={(state) => [state.canSubmit, state.isSubmitting]}
+								// biome-ignore lint/correctness/noChildrenProp: false positive
+								children={([canSubmit, isSubmitting]) => (
+									<Button
+										type="submit"
+										disabled={!canSubmit}
+										className="w-full bg-black text-white font-medium py-3 rounded-none mt-8"
+									>
+										{isSubmitting ? "..." : "Continue"}
+									</Button>
+								)}
+							/>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

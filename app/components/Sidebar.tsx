@@ -13,8 +13,13 @@ import FuyuLogo from "./FuyuLogo";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 
 const navigationItems = [
-	{ id: "expenses", label: "Expenses", icon: Sparkles, href: "/expenses" },
-	{ id: "wallet", label: "Budget", icon: Wallet, href: "/budget" },
+	{ id: "entries", label: "Entries", icon: Sparkles, href: "/entries" },
+	{
+		id: "investments",
+		label: "Investments",
+		icon: Wallet,
+		href: "/investments",
+	},
 	{ id: "summary", label: "Summary", icon: FileText, href: "/summary" },
 	{ id: "analytics", label: "Analytics", icon: ChartLine, href: "/analytics" },
 	{ id: "settings", label: "Settings", icon: Settings, href: "/settings" },
@@ -54,11 +59,10 @@ export default function Sidebar() {
 							<Link
 								key={item.id}
 								to={item.href}
-								className={`w-full flex items-center justify-between p-3 text-left rounded-lg transition-colors ${
-									location.pathname === item.href
+								className={`w-full flex items-center justify-between p-3 text-left rounded-lg transition-colors ${location.pathname === item.href
 										? "bg-gray-100 text-gray-900"
 										: "text-gray-700 hover:bg-gray-50"
-								}`}
+									}`}
 							>
 								<div className="flex items-center">
 									<item.icon className="h-5 w-5 mr-3" />

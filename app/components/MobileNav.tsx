@@ -12,8 +12,13 @@ import FuyuLogo from "./FuyuLogo";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 
 const navigationItems = [
-	{ id: "expenses", label: "Expenses", icon: Sparkles, href: "/expenses" },
-	{ id: "budget", label: "Budget", icon: Wallet, href: "/budget" },
+	{ id: "entries", label: "Entries", icon: Sparkles, href: "/entries" },
+	{
+		id: "investments",
+		label: "Investments",
+		icon: Wallet,
+		href: "/Investments",
+	},
 	{ id: "summary", label: "Summary", icon: FileText, href: "/summary" },
 	{ id: "analytics", label: "Analytics", icon: ChartLine, href: "/analytics" },
 	{ id: "settings", label: "Settings", icon: Settings, href: "/settings" },

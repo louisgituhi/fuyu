@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import BudgetContent from "~/components/BudgetContent";
 import { DashboardLayout } from "~/components/DashboardLayout";
 import { MobileHeader } from "~/components/MobileHeader";
 
-export const Route = createFileRoute("/budget")({
+export const Route = createFileRoute("/investments")({
 	component: BudgetsPage,
 });
 
@@ -11,9 +10,9 @@ function BudgetsPage() {
 	return (
 		<DashboardLayout>
 			<div className="min-h-screen bg-white md:bg-gray-50">
-				<MobileHeader title="Budget" />
+				<MobileHeader title="Investments" />
 				<div className="p-4 md:p-8">
-					<BudgetContent />
+					<h1>Investments will show up here </h1>
 				</div>
 			</div>
 		</DashboardLayout>
