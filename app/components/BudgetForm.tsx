@@ -57,7 +57,7 @@ export default function BudgetForm() {
 	});
 
 	return (
-		<div className="min-h-screen bg-gray-50 p-4">
+		<div className="min-h-96 bg-gray-50 p-4">
 			<div className=" mx-auto max-w-lg">
 				<div className="mb-8 flex items-center justify-between bg-white p-4 shadow-sm">
 					<div className="flex items-center gap-3">
