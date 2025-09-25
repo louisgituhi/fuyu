@@ -198,11 +198,11 @@ export default function ExpenseForm() {
 										)}
 									</form.Field>
 
-									<form.Field name="amount">
+									<form.Field name="transaction_cost">
 										{(field) => (
 											<div className="space-y-2">
 												<Label
-													htmlFor="amount"
+													htmlFor="transaction cost"
 													className="text-sm font-medium text-gray-700"
 												>
 													Transaction amount
