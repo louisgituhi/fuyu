@@ -17,6 +17,8 @@ export const queryInvestmentCollection = createCollection<savingsData>(
 			console.log(response);
 			return response.json();
 		},
+		staleTime: 1000 * 60 * 60 * 24 * 10,
+		gcTime: 1000 * 60 * 60 * 24 * 10,
 		getKey: (item) => item.id,
 		queryClient,
 	}),
