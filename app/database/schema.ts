@@ -9,7 +9,7 @@ import {
 	timestamp,
 } from "drizzle-orm/pg-core";
 
-export const expensesCategory = pgEnum("expense_category", [
+const expensesCategory = pgEnum("expense_category", [
 	"Groceries",
 	"Transport",
 	"Grooming",

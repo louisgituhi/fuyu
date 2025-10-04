@@ -53,3 +53,15 @@ export const expenseSchema = z.object({
 			message: "Transaction amount must be a number",
 		}),
 });
+
+const savingsSchema = z.object({
+	id: z.number(),
+	budget_id: z.number(),
+	expense_type: z.string(),
+	expense_category: z.string(),
+	amount: z.string(),
+	transaction_cost: z.string(),
+	created_at: z.coerce.date(),
+});
+
+export type savingsData = z.input<typeof savingsSchema>;
